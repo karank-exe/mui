@@ -31,8 +31,9 @@ import { create } from '@mui/material/styles/createTransitions';
 import useTable from './control/UseTable';
 import Controls from './control/Controls';
 import Switchcustom from './Switch';
-// import { Paper, makeStyles, TableBody, TableRow, TableCell, InputAdornment } from '@material-ui/core';
 import { Paper,TableBody,TableRow,TableCell,InputAdornment } from '@mui/material';
+import EditFranchise from './EditFranchise';
+import ProfilePopUp from './ProfilePopUp';
 // import { makeStyles } from '@mui/styles';
 const drawerWidth = 240;
 const style = styles();
@@ -118,7 +119,7 @@ createData('Rakesh Tamboli','Paytm','Savings',25000,true,'Deposit'),
 createData('Rakesh Tamboli','IDFC','Savings',25000,true,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Deposit'),
-createData('Shivam Sharma','Paytm','Savings',25000,true,'withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 createData('Rakesh Tamboli','IDFC','Savings',25000,true,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 createData('Rakesh Tamboli','IDFC','Savings',25000,true,'Withdrawal'),
@@ -266,8 +267,23 @@ const NewBankPage = () => {
                                     <TableCell sx={{width:200}}>{item.BankName}</TableCell>
                                     <TableCell sx={{width:200}}>{item.AccountType}</TableCell>
                                     <TableCell sx={{width:200}}>{item.CurrentBalance}</TableCell>
-                                    <TableCell sx={{width:100, textAlign:'right', border:'2px solid red',p:0}}><Switchcustom checked={true}/></TableCell>
-                                    <TableCell sx={{width:'400px'}}>{item.UsedFor}</TableCell>
+                                    <TableCell sx={{width:100, textAlign:'right', border:'2px solid red',p:0,background:'white'}}><Switchcustom checked={true}/></TableCell>
+                                    <TableCell sx={{width:'400px'}}>
+                                      <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid black', alignItems:'center'}}>
+                                        <Box sx={item.UsedFor==='Withdrawal'? style.withdrawstyle:style.depositstyle}>
+                                        {item.UsedFor}
+                                        </Box>
+                                        <Box>
+                                          <Button variant='contained' sx={style.button}>
+                                           Edit
+                                          </Button>
+                                          <Button variant='contained' sx={style.button}>
+                                           View
+                                          </Button>
+                                        </Box>
+                                      
+                                      </Box>
+                                    </TableCell>
                                 </TableRow>)
                             )
                         }
@@ -276,6 +292,8 @@ const NewBankPage = () => {
                 <TblPagination
                 />
         </Paper>
+        <EditFranchise/>
+        <ProfilePopUp/>
       </Box>
     </Box>
   )

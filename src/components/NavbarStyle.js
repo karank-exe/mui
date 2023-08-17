@@ -19,6 +19,33 @@ textTransform:'none',
 '&:hover':{
     background:'grey'
 }
-
-}
+},
+bellBox:{
+    border:'2px solid black', 
+    display:'flex', 
+    justifyContent:'center',
+    position:'relative',
+},
+bellBoxBadge:{
+    width:'20px', 
+    height:'20px', 
+    background:'#FF5630', 
+    borderRadius:'50%',
+    position:'absolute', 
+    top:'-12px', 
+    right:'-8px', 
+    color:'white', 
+    display:'flex', 
+    justifyContent:'center', 
+    alignItems:'center'     
+},
+avatarImg:{
+    borderRadius:50, 
+    marginLeft:'20px',
+},
+statusImg:{
+    position:'absolute',
+    marginLeft:'55px',
+    bottom:2
+}   
 })
