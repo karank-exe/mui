@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Typography from '@mui/material/Typography'
 // import { Table, TableHead, TableRow, TableCell, makeStyles, TablePagination, TableSortLabel } from '@material-ui/core'
 import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } from '@mui/material';
 // import { makeStyles } from '@mui/styles';
@@ -56,7 +57,17 @@ export default function useTable(records, headCells,filterFn) {
                                     active={orderBy === headCell.id}
                                     direction={orderBy === headCell.id ? order : 'asc'}
                                     onClick={() => { handleSortRequest(headCell.id) }}>
+                                    <Typography sx={{//styleName: Components/TableTh;
+                                            fontFamily: 'Public Sans',
+                                            fontSize: '14px',
+                                            fontWeight: '600',
+                                            lineHeight: '24px',
+                                            letterSpacing: '0px',
+                                            textAlign: 'left',
+                                            color:'#637381'
+                                         }}>
                                     {headCell.label}
+                                    </Typography>
                                 </TableSortLabel>
                             }
                         </TableCell>))

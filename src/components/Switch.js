@@ -66,7 +66,7 @@ const Switchcustom = ({checked,text}) => {
   return (
     <div>
         <Box sx={style.active}>
-            {text&&<Typography sx={style.activeText}>Active</Typography>}
+            {text&&<Typography sx={style.activeText}>{text}</Typography>}
             <IOSSwitch sx={{ m: 1 }} checked={check} onClick={handleClick} />
         </Box>
         

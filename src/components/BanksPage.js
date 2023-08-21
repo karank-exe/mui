@@ -1,0 +1,138 @@
+import React from 'react'
+import useTable from './control/UseTable';
+import Toolbar from '@mui/material/Toolbar'
+import BankDetails from './BankDetails';
+import { styles } from './BanksPageStyles';
+import { Paper,TableBody,TableRow,TableCell,InputAdornment } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Controls from './control/Controls';
+import Search from '@mui/icons-material/Search';
+import AddIcon from '@mui/icons-material/Add';
+import Switchcustom from './Switch';
+import Box from '@mui/material/Box';
+const style = styles();
+const headCells = [
+    { id: 'accountholdername', label: 'Account Holder Name' },
+    { id: 'bankname', label: 'Bank Name' },
+    { id: 'accounttype', label: 'Account Type'},
+    { id: 'currentbalance', label: 'Current Balance' },
+    { id: 'status', label: 'Status',checked:'false', disableSorting:true},
+    { id: 'usedfor', label: 'Used For'},
+
+]
+function createData(accountholdername, bankname, accounttype, currentbalance, status,usedfor) {
+  return {accountholdername, bankname, accounttype, currentbalance, status,usedfor };
+}
+const recordsdata=[
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Rakesh Tamboli','Paytm','Savings',25000,true,'Deposit'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,false,'Deposit'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+]
+const BanksPage = () => {
+    const [records, setRecords] = React.useState(recordsdata)
+    const [filterFn, setFilterFn] = React.useState({ fn: items => { return items; } })
+    const [selectedUser, setSelectedUser]=React.useState(null)
+
+    const {
+      TblContainer,
+      TblHead,
+      TblPagination,
+      recordsAfterPagingAndSorting,
+  } = useTable(records, headCells, filterFn);
+
+  const handleSearch = e => {
+    let target = e.target;
+    setFilterFn({
+        fn: items => {
+            if (target.value == "")
+                return items;
+            else
+                return items.filter(x => x.accountholdername.toLowerCase().includes(target.value))
+        }
+    })
+}
+const handleViewClick=(user)=>{
+    setSelectedUser(user)
+    console.log(user)
+  }
+  return (
+    <>
+    {selectedUser ?
+        (<BankDetails selectedUser={selectedUser}/>):
+                            (<>
+                              <Paper >
+                              <Toolbar sx={{display:'flex', justifyContent:'space-between'}}>
+                                          <Typography sx={style.BankTitle}>
+                                            Banks
+                                          </Typography>
+                                          <Box sx={{display:'flex',height:'40px'}}>
+                                          <Controls.Input
+                                              label="Search Employees"
+                                              // className={classes.searchInput}
+                                              InputProps={{
+                                                startAdornment: (<InputAdornment position="start">
+                                                      <Search />
+                                                  </InputAdornment>)
+                                              }
+                                            }
+                                              onChange={handleSearch}
+                                              size='small'
+                                              />
+                                          <Button  variant='contained' sx={style.AddBankButton}
+                                          startIcon={<AddIcon/>}
+                                          ><Typography sx={style.AddBankButtonText}>Add New Bank</Typography></Button>
+                                          </Box>
+                                      </Toolbar>
+                              <TblContainer>
+                                          <TblHead />
+                                          <TableBody>
+                                              {
+                                                  recordsAfterPagingAndSorting().map((item,index) =>
+                                                      (<TableRow key={index}>
+                                                          <TableCell sx={{width:200}}>{item.accountholdername}</TableCell>
+                                                          <TableCell sx={{width:200}}>{item.bankname}</TableCell>
+                                                          <TableCell sx={{width:200}}>{item.accounttype}</TableCell>
+                                                          <TableCell sx={{width:200}}>{item.currentbalance}</TableCell>
+                                                          <TableCell sx={{width:100, textAlign:'right', border:'2px solid red',p:0,background:'white'}}><Switchcustom checked={item.status} /></TableCell>
+                                                          <TableCell sx={{width:'400px'}}>
+                                                            <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid black', alignItems:'center'}}>
+                                                              <Box sx={item.usedfor==='Withdrawal'? style.withdrawstyle:style.depositstyle}>
+                                                              {item.usedfor}
+                                                              </Box>
+                                                              <Box>
+                                                                <Button variant='contained' sx={style.button}>
+                                                                 Edit
+                                                                </Button>
+                                                                <Button variant='contained' sx={style.button} onClick={()=>handleViewClick(item)}>
+                                                                 View
+                                                                </Button>
+                                                              </Box>
+                                                            
+                                                            </Box>
+                                                          </TableCell>
+                                                      </TableRow>)
+                                                  )
+                                              }
+                                          </TableBody>
+                                      </TblContainer>
+                                      <TblPagination
+                                      />
+                              </Paper>
+                              </>
+                            )
+        }
+</>
+  );
+}
+
+export default BanksPage

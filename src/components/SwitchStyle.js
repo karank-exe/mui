@@ -4,7 +4,7 @@ export const styles=()=>({
         height:'30px',
         padding: '4px 8px 4px 8px',
         borderRadius: '8px',
-        border:'2px solid black',
+        // border:'2px solid black',
         gap: '8px',
         display:'flex', 
         alignItems:'center',
