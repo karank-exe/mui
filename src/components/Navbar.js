@@ -23,12 +23,7 @@ import ProfilePopUp from './ProfilePopUp';
 
 const style = styles();
 // const drawerWidth = 240;
-const Navbar = ({drawerWidth}) => {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-
-    const handleDrawerToggle = () => {
-      setMobileOpen(!mobileOpen);
-    };
+const Navbar = ({drawerWidth,handleDrawerToggle}) => {
     const[logoutOpen,setLogoutOpen]=useState(false);
     const [editOpen, setEditOpen]= useState(false);
     const handleClickOpen=()=>{
@@ -46,7 +41,7 @@ const Navbar = ({drawerWidth}) => {
     position="fixed"
     sx={{
       width: { sm: `calc(100% - ${drawerWidth}px)` },
-      ml: { sm: `${drawerWidth}px` },
+      ml: { sm: `${drawerWidth}px` }
     }}
   >
     <Toolbar sx={{backgroundColor:'white',border:'2px solid black' ,display:'flex',justifyContent:'space-between'}}>
@@ -67,7 +62,7 @@ const Navbar = ({drawerWidth}) => {
       </Box>
       <Box sx={{border:'2px solid red',display:'flex', alignItems:'center'}}>
           <Franchise/>
-          <Switchcustom checked={true} text={true}/>
+          <Switchcustom checked={true} text='Active'/>
           <Box sx={{border:'2px solid green', position:'relative'}}>
           <Button variant='contained' sx={style.editAddbutton} onClick={handleClickOpen} >Edit</Button>
           <Box sx={{position:'absolute', top:'30px', zIndex:'2'}} onClose={handleClose}>
