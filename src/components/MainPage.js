@@ -10,6 +10,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import Collapse from '@mui/material/Collapse'
+import Divider from '@mui/material/Divider'
 import{ styles} from './MainPageStyle'
 import analytics from '../components/image/analytics.png'
 import banks from '../components/image/bank.png'
@@ -19,6 +21,8 @@ import usageimg from '../components/image/usageimg.png'
 import Navbar from './Navbar';
 import BanksPage from './BanksPage';
 import Analytics from './Analytics';
+import Panel from './Panel';
+import WithdrawPage from './WithdrawPage';
 import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
 
 // import { makeStyles } from '@mui/styles';
@@ -49,6 +53,12 @@ const overview=[
     {
         text:'Panel',
         image: panel,
+        subOptions:[
+          {text:'Panel1'},
+          {text:'Panel2'},
+          {text:'Panel3'},
+          {text:'Panel4'}
+        ]
     },
     {
         text:'Roles',
@@ -91,6 +101,14 @@ const usage=[
 const MainPage = () => {
     // const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false)
+
+    function handleClick(e) {
+      e.preventDefault()
+      setOpen(!open)
+      console.log('handle click',open)
+    }
+
 
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
@@ -105,22 +123,47 @@ const MainPage = () => {
         <List sx={{display:'flex', flexDirection:'column',}}>
         <Typography sx={style.overview}>OVERVIEW</Typography>
           {overview.map((data, index) => (
-            <ListItem key={data.text} disablePadding sx={{border:'2px solid green'}}>
-              <ListItemButton  to={`/${data.text.toLowerCase()}`}>
-                <ListItemIcon>
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                  <img src={data.image}/>
-                </ListItemIcon>
-                <ListItemText primary={data.text} sx={style.listItemText} />
+            data.text!='Panel'?
+            (<ListItem key={data.text} disablePadding sx={{border:'2px solid green'}}>
+            <ListItemButton  to={`/${data.text.toLowerCase()}`}>
+              <ListItemIcon>
+                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                <img src={data.image}/>
+              </ListItemIcon>
+              <ListItemText primary={data.text} sx={style.listItemText} />
+            </ListItemButton>
+          </ListItem>):(
+            <div key={data.text}>
+            <ListItem key={`${data.text}-${index}`} disablePadding sx={{border:'2px solid green'}}>
+            <ListItemButton onClick={handleClick} to={`/${data.text.toLowerCase()}`}>
+            <ListItemIcon>
+              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+              <img src={data.image}/>
+            </ListItemIcon>
+            <ListItemText primary={data.text} sx={style.listItemText} />
+          </ListItemButton>
+          </ListItem>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Divider/>
+          <List>
+          {data.subOptions.map((subOption,subIndex)=>(
+            <ListItem key={`${subOption.text}-${subIndex}`}>
+              <ListItemButton component={Link} to={`/panel/${subOption.text.toLowerCase()}`}>
+              <ListItemText inset primary={subOption.text} />
               </ListItemButton>
             </ListItem>
+          ))}
+          </List>
+          </Collapse>
+          </div>
+          ) 
           ))}
         </List>
         <Typography sx={style.usage}>USAGE</Typography>
         <List>
           {usage.map((data, index) => (
             <ListItem key={data.text} disablePadding>
-              <ListItemButton>
+              <ListItemButton  to={`/${data.text.toLowerCase()}`}>
                 <ListItemIcon>
                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                   <img src={data.image}/>
@@ -181,6 +224,8 @@ const MainPage = () => {
         <Routes>
           <Route path='/banks' element={<BanksPage/>} />
           <Route path='/analytics' element={<Analytics/>} />
+          <Route path='/panel/:panelId' element={<Panel/>}/>
+          <Route path='/withdraw' element={<WithdrawPage/>} />
         </Routes>
       </Box>
     </Box>

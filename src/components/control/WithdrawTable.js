@@ -24,7 +24,6 @@ import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } fro
 export default function useTable(records, headCells,filterFn) {
 
     // const classes = useStyles();
-
     const pages = [5, 10, 25]
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(pages[page])
@@ -64,7 +63,7 @@ export default function useTable(records, headCells,filterFn) {
                                             lineHeight: '24px',
                                             letterSpacing: '0px',
                                             textAlign: 'left',
-                                            color:'#637381'
+                                            color:'#637381',
                                          }}>
                                     {headCell.label}
                                     </Typography>
