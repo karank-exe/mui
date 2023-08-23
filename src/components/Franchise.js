@@ -60,13 +60,19 @@ const StyledMenu = styled((props) => (
 const Franchise = () => {
     const [text, setText]= useState('Franchise')
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [selectedValue, setSelectedValue] = useState('Franchise');
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (e) => {
     // console.log(e.target.innerText)
-    {e.target.innerText!==''?  setText(e.target.innerText):setText('Franchise')} 
+    // {e.target.innerText!==''?  setText(e.target.innerText):setText('Franchise')} 
+    // setAnchorEl(null);
+    if (e.target.innerText !== '') {
+      setText(e.target.innerText);
+      setSelectedValue(e.target.innerText); // Update the selected value when an option is clicked
+    }
     setAnchorEl(null);
   };
   return (
@@ -93,10 +99,10 @@ const Franchise = () => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleClose} disableRipple selected={selectedValue === 'Franchise1'}>
          Franchise1
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleClose} disableRipple selected={selectedValue === 'Franchise2'}>
          Franchise2
         </MenuItem>
         {/* <Divider sx={{ my: 0.5 }} />

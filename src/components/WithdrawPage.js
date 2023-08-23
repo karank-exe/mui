@@ -2,16 +2,11 @@ import React,{useState} from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import Toolbar from '@mui/material/Toolbar'
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Drawer from '@mui/material/Drawer'
 import TextField from '@mui/material/TextField'
 import FormLabel from '@mui/material/FormLabel'
 import InputAdornment from '@mui/material/InputAdornment';
 import Paper from '@mui/material/Paper'
+import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
@@ -21,74 +16,10 @@ import downCircle from '../components/image/downCircle.png'
 import filterIcon from '../components/image/filterButtonIcon.png'
 import { styles } from './WithdrawPageStyles';
 import { TableRow, TableBody, TableCell } from '@mui/material'
-import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import useTable from '../components/control/WithdrawTable'
+import FilterDrawer from './FilterDrawer'
+import AddWithdrawal from './AddWithdrawal'
 const style = styles();
-const overview=[
-    {
-        text:'Analytics',
-    },
-    {
-        text:'Banks',
-    },
-    {
-        text:'Panel',
-    },
-    {
-        text:'Roles',
-    },
-]
-const usage=[
-    {
-        text:'Withdraw',
-    },
-    {
-        text:'Deposit',
-    },
-    {
-        text:'Credit/Loans',
-    },
-    {
-        text:'Expense',
-    },
-    {
-        text:'Bank Transfer',
-    },
-    {
-        text:'Settle',
-    },
-]
-//----------------Drawer------------------------------------------//
-const drawer = (
-    <div>
-      <Toolbar >
-          <Typography sx={style.ledger}>Ledgers</Typography>
-      </Toolbar>
-     
-      <List sx={{display:'flex', flexDirection:'column',}}>
-      <Typography sx={style.overview}>OVERVIEW</Typography>
-        {overview.map((data, index) => (
-          <ListItem key={data.text} disablePadding sx={{border:'2px solid green'}}>
-            <ListItemButton>
-           
-              <ListItemText primary={data.text} sx={style.listItemText} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Typography sx={style.usage}>USAGE</Typography>
-      <List>
-        {usage.map((data, index) => (
-          <ListItem key={data.text} disablePadding>
-            <ListItemButton>
-  
-              <ListItemText primary={data.text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
 
 //----------------custom Theme for search field-------------------//
 const customTheme=(outerTheme)=>
@@ -186,6 +117,7 @@ const WithdrawPage = () => {
     const[records,setRecords]=useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filterOpen, setFilterOpen]= useState(false)
+    const [value, setValue] = useState([40, 160]);
     const outerTheme = useTheme()
 
     const {
@@ -209,6 +141,20 @@ const WithdrawPage = () => {
     const handleFilter =()=>{
         setFilterOpen(!filterOpen)
     }
+
+    const handleSliderChange = (event, newValue) => {
+      let [newFirstValue, newSecondValue] = newValue;
+  
+      if (newFirstValue >= 40) {
+        newFirstValue = 40;
+      }
+  
+      if (newSecondValue <= 160) {
+        newSecondValue = 160  ;
+      }
+  
+      setValue([newFirstValue, newSecondValue]);
+    };
 
   return (
     <>
@@ -326,7 +272,7 @@ const WithdrawPage = () => {
             inputProps: {
                 style: {
                     fontFamily: 'Public Sans',
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontWeight: '400',
                     lineHeight: '22px',
                     letterSpacing: '0px',
@@ -386,22 +332,8 @@ const WithdrawPage = () => {
                 />
         </Box>
     </Paper>
-    <Drawer
-          variant="temporary"
-          anchor='right'
-          open={filterOpen}
-          onClose={handleFilter}
-        //   onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, 
-          }}
-          sx={{
-            // display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '240px' },
-          }}
-        >
-          {drawer}
-        </Drawer>
+    <FilterDrawer filterOpen={filterOpen} handleFilter={handleFilter}/>
+    <AddWithdrawal/>
     </>
   )
 }
