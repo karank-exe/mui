@@ -3,11 +3,6 @@ import { styled, alpha } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import EditIcon from "@mui/icons-material/Edit";
-import Divider from "@mui/material/Divider";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {styles} from './FranchiseStyle'
 import { Typography } from '@mui/material';
@@ -61,10 +56,10 @@ const Franchise = () => {
     const [text, setText]= useState('Franchise')
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [selectedValue, setSelectedValue] = useState('Franchise');
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
   const handleClose = (e) => {
     // console.log(e.target.innerText)
     // {e.target.innerText!==''?  setText(e.target.innerText):setText('Franchise')} 

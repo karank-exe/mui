@@ -111,6 +111,14 @@ export const styles=()=>({
         letterSpacing: '0px',
         textAlign: 'left',
     },
+    tableDataText:{
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: 400,
+        lineHeight: '22px',
+        letterSpacing: '0px',
+        textAlign: 'center',
+    },
     filterButton:{
         textTransform:'none',width:'94px',
         height:'40px',
@@ -134,6 +142,7 @@ export const styles=()=>({
         textAlign: 'center',
     },
     addWithdrawButton:{
+    position:'relative',
     marginLeft:'10px',
     textTransform:'none',
     width:'170px',

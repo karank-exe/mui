@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import close from '../components/image/close.png'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button'
+import close from  '../image/close.png'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import { styles } from './EditFranchiseStyle';
 const style= styles()
@@ -41,31 +42,27 @@ createTheme({
           },
       },
 });
-
-const AddWithdrawal = () => {
+const EditFranchise = ({handleClose}) => {
     const [franchise, setFranchise]=useState()
     const [password, setPassword]=useState()
     console.log(franchise,password)
     const outerTheme = useTheme()
   return (
-    <div>
-    <Box sx={{border:'2px solid black', width:'670px',height:'350px',borderRadius:'16px',boxShadow:3,padding:'5px 5px 0 5px'}}>
-        <Box sx={{border:'2px solid red',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-            <Typography>Add Withdraw</Typography>
-            <img src={close}/>
+    <Box sx={style.main}>
+        <Box sx={style.titleBox}>
+        <Typography sx={style.titleBoxText}>Edit Franchise</Typography>
+        <img src={close} style={{position:'absolute', right:'0px',cursor:'pointer'}} onClick={handleClose}/>
         </Box>
-        <Box sx={{border:'2px solid orange',mt:'10px',display:'flex',justifyContent:'space-between',flexWrap:'wrap'}}>
         <ThemeProvider theme={customTheme(outerTheme)} >
-        <TextField variant='outlined' label='Transaction Amount'     sx={{width:'48%', mt:'10px'}} onChange={(e)=>setFranchise(e.target.value)}/>
-        <TextField variant='outlined' label='UTR No.' sx={{width:'48%', mt:'10px'}} onChange={(e)=>setPassword(e.target.value)}/>
-        <TextField variant='outlined' label='Username' sx={{width:'48%', mt:'10px'}} onChange={(e)=>setFranchise(e.target.value)}/>
-        <TextField variant='outlined' label='Date and Time' sx={{width:'48%', mt:'10px'}} onChange={(e)=>setPassword(e.target.value)}/>
+        <TextField variant='outlined' label='Name' sx={{width:'95%', mt:'10px'}} onChange={(e)=>setFranchise(e.target.value)}/>
+        <TextField variant='outlined'type='password' placeholder='Password' sx={{width:'95%', mt:'10px'}} onChange={(e)=>setPassword(e.target.value)}/>
         </ThemeProvider>
+        <Box sx={{width:'95%', borderTop:'2px solid #919EAB33',mt:'20px', paddingTop:'10px'}}>
+        <Button disabled={!(franchise&&password)} variant='contained' sx={style.savebutton}>Save Changes</Button>
+        <Button disabled={!(franchise&&password)} variant='contained'sx={style.deletebutton}>Delete Franchise</Button>
         </Box>
-
     </Box>
-    </div>
   )
 }
 
-export default AddWithdrawal
+export default EditFranchise

@@ -7,16 +7,16 @@ import Panel4 from './Panel4';
 const Panel = () => {
     const {panelId}= useParams();
     let panelContent= null;
-    if (panelId=='panel1'){
+    if (panelId==='panel1'){
        panelContent=<Panel1/>;
     }
-    else if (panelId=='panel2'){
+    else if (panelId==='panel2'){
         panelContent=<Panel2/>;
      }
-     else if (panelId=='panel3'){
+     else if (panelId==='panel3'){
         panelContent=<Panel3/>;
      }
-     else if (panelId=='panel4'){
+     else if (panelId==='panel4'){
         panelContent=<Panel4/>;
      }
   return (

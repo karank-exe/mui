@@ -6,20 +6,17 @@ import React,{useState} from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'
-import appbar from'../components/image/appbar.png'
-import Franchise from './Franchise';
-import Switchcustom from './Switch';
+import appbar from '../image/appbar.png'                                                      
+import Franchise from '../Franchise/Franchise';
+import Switchcustom from '../Switch/Switch';
 import { styles } from './NavbarStyle';
-import divider from '../components/image/divider.png'
-import icbell from '../components/image/ic-bell.png'
-import avatar from '../components/image/Avatar.png'
-import avatarArrow from '../components/image/avatarArrow.png'
-import status from '../components/image/Status.png'
-import EditFranchise from './EditFranchise';
-import Dialog from '@mui/material/Dialog'
-import DialogContent from '@mui/material/DialogContent'
-import useTable from './control/UseTable';
-import ProfilePopUp from './ProfilePopUp';
+import divider from  '../image/divider.png'
+import icbell from  '../image/ic-bell.png'
+import avatar from  '../image/Avatar.png'
+import avatarArrow from '../image/avatarArrow.png'
+import status from '../image/Status.png'
+import EditFranchise from '../Franchise/EditFranchise';
+import ProfilePopUp from '../ProfilePopUp/ProfilePopUp';
 
 const style = styles();
 // const drawerWidth = 240;

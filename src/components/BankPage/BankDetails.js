@@ -11,15 +11,14 @@ import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack'
-import Switchcustom from './Switch'
-import useTable from './control/UseTable'
+import Switchcustom from '../Switch/Switch'
+import useTable from '../control/UseTable'
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
-import stack from '../components/image/stack.png'
-import filterIcon from '../components/image/filterButtonIcon.png'
+import stack from '../image/stack.png'
+import filterIcon from '../image/filterButtonIcon.png'
 import {styles} from './BankDetailsStyles'
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
@@ -201,7 +200,7 @@ const BankDetails = ({selectedUser}) => {
     let target = e.target;
     setFilterFn({
         fn: items => {
-            if (target.value == "")
+            if (target.value === "")
                 return items;
             else
                 return items.filter(x => x.transactionAmount.includes(target.value))
@@ -275,8 +274,10 @@ const handleFilter =()=>{
                 <Button variant='contained' sx={style.withdrawalButton}>Withdrawal</Button>
                 <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid red', transform:'translateY(50%)'}}>
                     <Box>
-                        <Typography variant='h3'>Rs 60,000</Typography>
-                        <Typography>Current Balance</Typography>
+                        <Typography sx={{fontFamily: 'Public Sans',fontSize: '48px',fontWeight: '800',lineHeight: '64px',letterSpacing: '0px',textAlign: 'left',
+                      }}>Rs 60,000</Typography>
+                        <Typography sx={{fontFamily: 'Public Sans',fontSize: '16px',fontWeight: '600',lineHeight: '24px',letterSpacing: '0px',textAlign: 'left',color:'#637381'
+                      }}>Current Balance</Typography>
                     </Box>
                     <img src={stack}/>
                 </Box>

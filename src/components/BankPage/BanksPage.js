@@ -1,15 +1,15 @@
 import React from 'react'
-import useTable from './control/UseTable';
+import useTable from '../control/UseTable';
 import Toolbar from '@mui/material/Toolbar'
 import BankDetails from './BankDetails';
 import { styles } from './BanksPageStyles';
 import { Paper,TableBody,TableRow,TableCell,InputAdornment } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Controls from './control/Controls';
+import Controls from '../control/Controls';
 import Search from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
-import Switchcustom from './Switch';
+import Switchcustom from '../Switch/Switch';
 import Box from '@mui/material/Box';
 const style = styles();
 const headCells = [
@@ -54,7 +54,7 @@ const BanksPage = () => {
     let target = e.target;
     setFilterFn({
         fn: items => {
-            if (target.value == "")
+            if (target.value === "")
                 return items;
             else
                 return items.filter(x => x.accountholdername.toLowerCase().includes(target.value))

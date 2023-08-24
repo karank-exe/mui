@@ -50,6 +50,7 @@ export default function useTable(records, headCells,filterFn) {
                 {
                     headCells.map(headCell => (
                         <TableCell key={headCell.id}
+                        sx={{textAlign:'center', border:'2px solid red'}}
                             sortDirection={orderBy === headCell.id ? order : false}>
                             {headCell.disableSorting ? headCell.label :
                                 <TableSortLabel

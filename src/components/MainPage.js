@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
@@ -18,11 +17,12 @@ import banks from '../components/image/bank.png'
 import panel from '../components/image/panel.png'
 import user from '../components/image/user.png'
 import usageimg from '../components/image/usageimg.png'
-import Navbar from './Navbar';
-import BanksPage from './BanksPage';
-import Analytics from './Analytics';
-import Panel from './Panel';
-import WithdrawPage from './WithdrawPage';
+import Navbar from './Navbar/Navbar';
+import BanksPage from './BankPage/BanksPage';
+import Analytics from './Analytics/Analytics';
+import Panel from './Panel/Panel';
+import WithdrawPage from './WithdrawPage/WithdrawPage';
+import Deposit from './Deposit/Deposit';
 import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
 
 // import { makeStyles } from '@mui/styles';
@@ -123,7 +123,7 @@ const MainPage = () => {
         <List sx={{display:'flex', flexDirection:'column',}}>
         <Typography sx={style.overview}>OVERVIEW</Typography>
           {overview.map((data, index) => (
-            data.text!='Panel'?
+            data.text!=='Panel'?
             (<ListItem key={data.text} disablePadding sx={{border:'2px solid green'}}>
             <ListItemButton  to={`/${data.text.toLowerCase()}`}>
               <ListItemIcon>
@@ -226,6 +226,7 @@ const MainPage = () => {
           <Route path='/analytics' element={<Analytics/>} />
           <Route path='/panel/:panelId' element={<Panel/>}/>
           <Route path='/withdraw' element={<WithdrawPage/>} />
+          <Route path='/deposit' element={<Deposit/>} />
         </Routes>
       </Box>
     </Box>

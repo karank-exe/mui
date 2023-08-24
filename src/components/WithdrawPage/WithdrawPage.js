@@ -11,14 +11,14 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SearchIcon from '@mui/icons-material/Search';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AddIcon from '@mui/icons-material/Add';
-import upCircle from '../components/image/upcircle.png'
-import downCircle from '../components/image/downCircle.png'
-import filterIcon from '../components/image/filterButtonIcon.png'
+import upCircle from '../image/upcircle.png'
+import downCircle from '../image/downCircle.png'
+import filterIcon from '../image/filterButtonIcon.png'
 import { styles } from './WithdrawPageStyles';
 import { TableRow, TableBody, TableCell } from '@mui/material'
-import useTable from '../components/control/WithdrawTable'
-import FilterDrawer from './FilterDrawer'
-import AddWithdrawal from './AddWithdrawal'
+import useTable from '../control/WithdrawTable'
+import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import AddWithdrawal from '../AddWithdrawal/AddWithdrawal'
 const style = styles();
 
 //----------------custom Theme for search field-------------------//
@@ -117,6 +117,7 @@ const WithdrawPage = () => {
     const[records,setRecords]=useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filterOpen, setFilterOpen]= useState(false)
+    const [addWtihdrawalOpen, setAddWithdrawalOpen]= useState(false);
     const [value, setValue] = useState([40, 160]);
     const outerTheme = useTheme()
 
@@ -152,9 +153,14 @@ const WithdrawPage = () => {
       if (newSecondValue <= 160) {
         newSecondValue = 160  ;
       }
-  
       setValue([newFirstValue, newSecondValue]);
     };
+    const handleAddWithdrawalOpen=()=>{
+        setAddWithdrawalOpen(true)
+    }
+    const handleAddWithdrawClose=()=>{
+        setAddWithdrawalOpen(false)
+    }
 
   return (
     <>
@@ -168,8 +174,7 @@ const WithdrawPage = () => {
                 </Box>
             </Box>
             <Box sx={style.rateBox}>
-                <CurrencyRupeeIcon />
-                <Typography sx={style.rateText}>35,000</Typography>
+                <Typography sx={style.rateText}>₹ 35,000</Typography>
             </Box>
             <Box sx={style.descriptionBox}>
                 <img src={upCircle}/>
@@ -187,8 +192,7 @@ const WithdrawPage = () => {
                 </Box>
             </Box>
             <Box sx={style.rateBox}>
-                <CurrencyRupeeIcon />
-                <Typography sx={style.rateGreenTextGradient}>40,651</Typography>
+                <Typography sx={style.rateGreenTextGradient}>₹ 40,651</Typography>
             </Box>
             <Box sx={style.descriptionBox}>
                 <img src={upCircle}/>
@@ -206,8 +210,7 @@ const WithdrawPage = () => {
                 </Box>
             </Box>
             <Box sx={style.rateBox}>
-                <CurrencyRupeeIcon />
-                <Typography sx={style.rateGreenTextGradient}>28,971</Typography>
+                <Typography sx={style.rateGreenTextGradient}>₹ 28,971</Typography>
             </Box>
             <Box sx={style.descriptionBox}>
                 <img src={downCircle}/>
@@ -225,8 +228,7 @@ const WithdrawPage = () => {
                 </Box>
             </Box>
             <Box sx={style.rateBox}>
-                <CurrencyRupeeIcon />
-                <Typography sx={style.rateRedTextGradient}>28,971</Typography>
+                <Typography sx={style.rateRedTextGradient}>₹ 28,971</Typography>
             </Box>
             <Box sx={style.descriptionBox}>
                 <img src={downCircle}/>
@@ -244,8 +246,7 @@ const WithdrawPage = () => {
                 </Box>
             </Box>
             <Box sx={style.rateBox}>
-                <CurrencyRupeeIcon />
-                <Typography sx={style.rateText}>545</Typography>
+                <Typography sx={style.rateText}>₹ 545</Typography>
             </Box>
             <Box sx={style.descriptionBox}>
                 <img src={downCircle}/>
@@ -259,7 +260,7 @@ const WithdrawPage = () => {
         <Box sx={{display:'flex', alignItems:'center',padding:'0px 8px 0px 8px',justifyContent:'space-between'}}>
         <Typography sx={style.withdrawText}>Withdraw</Typography>
 
-        <Box sx={{border:'2px solid green',display:'flex', alignItems:'center'}}>
+        <Box sx={{border:'2px solid green',display:'flex', alignItems:'center',position:'relative'}}>
         <ThemeProvider theme={customTheme(outerTheme)} >
         {/* custom styling for search field */}
       <TextField variant='outlined' placeholder='Search...' sx={{width:'250px',height:'45px', mt:'10px'}} size='small' onChange={handleSearch}
@@ -304,9 +305,12 @@ const WithdrawPage = () => {
       <Button sx={style.filterButton} variant='contained' endIcon={<img src={filterIcon}/>} onClick={handleFilter}>
       <Typography sx={style.filterButtonText}>Filters</Typography>
       </Button>
-      <Button sx={style.addWithdrawButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>}>
-      <Typography sx={style.addWithdrawButtonText}>Add Withdrawal</Typography>
+      <Button sx={style.addWithdrawButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleAddWithdrawalOpen}>
+          <Typography sx={style.addWithdrawButtonText}>Add Withdrawal</Typography>
       </Button>
+      <Box sx={{position:'absolute', top:'53px',right:'0px', zIndex:'2'}}>
+         {addWtihdrawalOpen&&<AddWithdrawal handleAddWithdrawClose={handleAddWithdrawClose}/>}  
+      </Box>
     </Box>
         </Box>
 
@@ -317,12 +321,12 @@ const WithdrawPage = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{width:100}}><Typography >{item.transactionAmount}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography >{item.date}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography >{item.utrNumber}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography >{item.panel}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography >{item.bankAccount}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography >{item.user}</Typography></TableCell>
+                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.transactionAmount}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.date}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.bankAccount}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.user}</Typography></TableCell>
                                 </TableRow>)
                             )
                         }
@@ -333,7 +337,7 @@ const WithdrawPage = () => {
         </Box>
     </Paper>
     <FilterDrawer filterOpen={filterOpen} handleFilter={handleFilter}/>
-    <AddWithdrawal/>
+    {/* <AddWithdrawal/> */}
     </>
   )
 }
