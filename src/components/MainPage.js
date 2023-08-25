@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
@@ -23,8 +24,9 @@ import Analytics from './Analytics/Analytics';
 import Panel from './Panel/Panel';
 import WithdrawPage from './WithdrawPage/WithdrawPage';
 import Deposit from './Deposit/Deposit';
-import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
-
+import CreditLoan from './CreditLoan/CreditLoan';
+import Expense from './Expense/Expense';
+import BankTransfer from './BankTransfer/BankTransfer';
 // import { makeStyles } from '@mui/styles';
 const drawerWidth = 240;
 const style = styles();
@@ -87,7 +89,7 @@ const usage=[
 
     },
     {
-        text:'Bank Transfer',
+        text:'BankTransfer',
         image:usageimg,
 
     },
@@ -227,6 +229,10 @@ const MainPage = () => {
           <Route path='/panel/:panelId' element={<Panel/>}/>
           <Route path='/withdraw' element={<WithdrawPage/>} />
           <Route path='/deposit' element={<Deposit/>} />
+          <Route path='/credit/loans' element={<CreditLoan/>} />
+          <Route path='/expense' element={<Expense/>} />
+          <Route path='/banktransfer' element={<BankTransfer/>} />
+
         </Routes>
       </Box>
     </Box>

@@ -11,7 +11,6 @@ export const styles=()=>({
     background:'white',
     textTransform:'none',
     mt:'10px',
-    color:'black',
     '&:hover':{
         background:'grey'
     }

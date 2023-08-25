@@ -1,9 +1,9 @@
 export const styles=()=>({
-    BankButton:{
+    transactionTypeButton:{
     display:'flex',
     justifyContent: 'space-between',    
     width: '315px',
-    height:'50px',
+    height:'60px',
     padding: '16px 14px 16px 14px',
     borderRadius: '8px',
     gap: '8px',

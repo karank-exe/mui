@@ -86,7 +86,7 @@ const AddBankDepositPage = ({bankSelectedValue,setBankSelectedValue}) => {
         disableElevation
         onClick={handleClick}
         sx={style.BankButton}
-        endIcon={<KeyboardArrowDownIcon />}
+        endIcon={<KeyboardArrowDownIcon style={{color:'#919EAB'}} />}
       >
         <Typography sx={{fonFamily: 'Public Sans',fontSize: '14px',fontWeight: 400,
         lineHeight: '22px',

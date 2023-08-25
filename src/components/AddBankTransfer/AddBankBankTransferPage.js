@@ -1,7 +1,7 @@
 import React,{useState}from 'react'
 import { styled, alpha } from "@mui/material/styles";
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,56 +11,56 @@ import MenuItem from "@mui/material/MenuItem";
 // import FileCopyIcon from "@mui/icons-material/FileCopy";
 // import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {styles} from './AddPanelDepositPageStyles'
+import {styles} from './AddBankBankTransferPageStyles'
 const style= styles();
 
 const StyledMenu = styled((props) => (
-    <Menu
-      elevation={0}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left"
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "left"
-      }}
-      {...props}
-    />
-  ))(({ theme }) => ({
-    "& .MuiPaper-root": {
-      borderRadius: 6,
-      marginTop: theme.spacing(1),
-      minWidth: 400,
-      color:
-        theme.palette.mode === "light"
-          ? "rgb(55, 65, 81)"
-          : theme.palette.grey[300],
-      boxShadow:
-        "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
-      "& .MuiMenu-list": {
-        padding: "4px 0",
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: "bottom",
+      horizontal: "left"
+    }}
+    transformOrigin={{
+      vertical: "top",
+      horizontal: "left"
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  "& .MuiPaper-root": {
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+    minWidth: 400,
+    color:
+      theme.palette.mode === "light"
+        ? "rgb(55, 65, 81)"
+        : theme.palette.grey[300],
+    boxShadow:
+      "rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
+    "& .MuiMenu-list": {
+      padding: "4px 0",
+    },
+    "& .MuiMenuItem-root": {
+      "& .MuiSvgIcon-root": {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5)
       },
-      "& .MuiMenuItem-root": {
-        "& .MuiSvgIcon-root": {
-          fontSize: 18,
-          color: theme.palette.text.secondary,
-          marginRight: theme.spacing(1.5)
-        },
-        "&:active": {
-          backgroundColor: alpha(
-            theme.palette.primary.main,
-            theme.palette.action.selectedOpacity
-          )
-        }
+      "&:active": {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity
+        )
       }
-    }
-  }));
-  
-const AddPanelDepositPage = ({panelSelectedValue,setPanelSelectedValue}) => {
-    const [text, setText]= useState('Search or Select Panel')
+    } 
+  }
+}));
+
+const AddBankBankTransferPage = ({fromBankSelectedValue,setFromBankSelectedValue,toBankSelectedValue,setToBankSelectedValue,}) => {
+    const [text, setText]= useState('Search or Select Bank')
     const [anchorEl, setAnchorEl] = React.useState(null);
- 
+   const bankSelectedValue= fromBankSelectedValue?fromBankSelectedValue:toBankSelectedValue;
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -71,7 +71,13 @@ const AddPanelDepositPage = ({panelSelectedValue,setPanelSelectedValue}) => {
         // setAnchorEl(null);
         if (e.target.innerText !== '') {
           setText(e.target.innerText);
-          setPanelSelectedValue(e.target.innerText); // Update the selected value when an option is clicked
+          if (fromBankSelectedValue !== undefined) {
+            setFromBankSelectedValue(e.target.innerText);
+          }
+          
+          if (toBankSelectedValue !== undefined) {
+            setToBankSelectedValue(e.target.innerText);
+          }
         }
         setAnchorEl(null);
       };
@@ -85,7 +91,7 @@ const AddPanelDepositPage = ({panelSelectedValue,setPanelSelectedValue}) => {
         variant="contained"
         disableElevation
         onClick={handleClick}
-        sx={style.panelButton}
+        sx={style.BankButton}
         endIcon={<KeyboardArrowDownIcon style={{color:'#919EAB'}} />}
       >
         <Typography sx={{fonFamily: 'Public Sans',fontSize: '14px',fontWeight: 400,
@@ -104,41 +110,32 @@ const AddPanelDepositPage = ({panelSelectedValue,setPanelSelectedValue}) => {
         onClose={handleClose}
       >
         <Box sx={{border:'2px solid red', }}>
-        <MenuItem onClick={handleClose} disableRipple selected={panelSelectedValue === 'Panel 1'}>
-         <Typography sx={{ fontFamily: 'Public Sans',
+        <MenuItem onClick={handleClose} disableRipple selected={bankSelectedValue === 'Shivam-HDFC'}>
+        <Typography sx={{ fontFamily: 'Public Sans',
         fontSize: '14px',
         fontWeight: 400,
         lineHeight: '22px',
-        letterSpacing: '0px',
+        letterSpacing: '0px', 
         textAlign:'left',
-        color:'#212B36'}}>Panel 1</Typography> 
+        color:'#212B36'}}>Shivam-HDFC</Typography> 
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple selected={panelSelectedValue === 'Panel 2'}>
+        <MenuItem onClick={handleClose} disableRipple selected={bankSelectedValue === 'Vivek-ICIC'}>
         <Typography sx={{ fontFamily: 'Public Sans',
         fontSize: '14px',
         fontWeight: 400,
         lineHeight: '22px',
         letterSpacing: '0px',
         textAlign:'left',
-        color:'#212B36'}}>Panel 2</Typography>  
+        color:'#212B36'}}>Vivek-ICIC</Typography> 
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple selected={panelSelectedValue === 'Panel 3'}>
-        <Typography sx={{ fonFtamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-        lineHeight: '22px',
-        letterSpacing: '0px',
-        textAlign:'left',
-        color:'#212B36'}}>Panel 3</Typography>  
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple selected={panelSelectedValue === 'Panel 4'}>
+        <MenuItem onClick={handleClose} disableRipple selected={bankSelectedValue === 'Rakesh-HDFC'}>
         <Typography sx={{ fontFamily: 'Public Sans',
         fontSize: '14px',
         fontWeight: 400,
         lineHeight: '22px',
         letterSpacing: '0px',
         textAlign:'left',
-        color:'#212B36'}}>Panel 4</Typography> 
+        color:'#212B36'}}>Rakesh-HDFC</Typography> 
         </MenuItem>
         </Box>
         {/* <Divider sx={{ my: 0.5 }} />
@@ -155,4 +152,4 @@ const AddPanelDepositPage = ({panelSelectedValue,setPanelSelectedValue}) => {
   )
 }
 
-export default AddPanelDepositPage
+export default AddBankBankTransferPage

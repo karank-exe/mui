@@ -31,7 +31,7 @@ export default function useTable(records, headCells,filterFn) {
             <TableRow sx={{backgroundColor:'#F4F6F8'}}>
                 {
                     headCells.map(headCell => (
-                        headCell.label==='User'?
+                        headCell.label==='To Bank'?
                         ( <TableCell key={headCell.id}
                             sx={{textAlign:'left', border:'2px solid red'}}
                                 sortDirection={orderBy === headCell.id ? order : false}>
@@ -61,7 +61,7 @@ export default function useTable(records, headCells,filterFn) {
                                         active={orderBy === headCell.id}
                                         direction={orderBy === headCell.id ? order : 'asc'}
                                         onClick={() => { handleSortRequest(headCell.id) }}>
-                                        <Typography sx={{//styleName: Components/TableTh;
+                                        <Typography sx={{
                                                 fontFamily: 'Public Sans',
                                                 fontSize: '14px',
                                                 fontWeight: '600',

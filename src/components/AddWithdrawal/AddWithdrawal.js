@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import TextField from '@mui/material/TextField'
 import close from '../image/close.png'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
@@ -70,6 +71,7 @@ const AddWithdrawal = ({handleAddWithdrawClose}) => {
         </ThemeProvider>
         <AddBankWithdrawalPage bankSelectedValue={bankSelectedValue} setBankSelectedValue={setBankSelectedValue} />  
         <AddPanelWithdrawalPage panelSelectedValue={panelSelectedValue} setPanelSelectedValue={setPanelSelectedValue} />
+        <Divider style={{width:'100%'}}/>
         <Button variant='contained' disabled={!(transactionAmount&&utr&&username&&dateTime&&bankSelectedValue&&panelSelectedValue)} sx={style.addTransactionButton}>Add Transaction</Button>
         </Box>
 

@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 // import FileCopyIcon from "@mui/icons-material/FileCopy";
 // import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {styles} from './AddBankWithdrawalPageStyles'
+import {styles} from './AddPanelWithdrawalPageStyles'
 const style= styles();
 
 const StyledMenu = styled((props) => (
@@ -85,8 +85,8 @@ const AddPanelWithdrawalPage = ({panelSelectedValue,setPanelSelectedValue}) => {
         variant="contained"
         disableElevation
         onClick={handleClick}
-        sx={style.BankButton}
-        endIcon={<KeyboardArrowDownIcon />}
+        sx={style.panelButton}
+        endIcon={<KeyboardArrowDownIcon style={{color:'#919EAB'}} />}
       >
         <Typography sx={{fonFamily: 'Public Sans',fontSize: '14px',fontWeight: 400,
         lineHeight: '22px',

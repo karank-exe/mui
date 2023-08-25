@@ -1,5 +1,5 @@
 export const styles=()=>({
-    BankButton:{
+    panelButton:{
     display:'flex',
     justifyContent: 'space-between',    
     width: '315px',
