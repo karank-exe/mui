@@ -1,0 +1,24 @@
+.MuiTableSortLabel-root {
+    position: relative !important;
+    /* margin-left:50px !important; Adjust the value as needed */
+  }
+  .MuiTableSortLabel-icon::before {
+    content: '';
+    display: inline-block;
+    border: 2px solid green;
+    width: 50px; /* Adjust as needed */
+}
+  .arrow-icon {
+    margin-left: 35px; /* Adjust the value as needed */
+    width: 8px; /* Adjust the width of the arrow icon */
+    height: 8px; /* Adjust the height of the arrow icon */
+  }
+  .MuiTableSortLabel-icon{
+    color: pink;
+  }
+
+  /* Add your custom class */
+  .MuiTableSortLabel-icon.customTableSortLabel{
+    /* Set the color of the arrow icon */
+    color: pink !important;
+  }

@@ -27,6 +27,7 @@ import Deposit from './Deposit/Deposit';
 import CreditLoan from './CreditLoan/CreditLoan';
 import Expense from './Expense/Expense';
 import BankTransfer from './BankTransfer/BankTransfer';
+import Settle from './Settle/Settle';
 // import { makeStyles } from '@mui/styles';
 const drawerWidth = 240;
 const style = styles();
@@ -232,6 +233,7 @@ const MainPage = () => {
           <Route path='/credit/loans' element={<CreditLoan/>} />
           <Route path='/expense' element={<Expense/>} />
           <Route path='/banktransfer' element={<BankTransfer/>} />
+          <Route path='/settle' element={<Settle/>} />
 
         </Routes>
       </Box>
