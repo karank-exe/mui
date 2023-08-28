@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/MenuOutlined';
 import React,{useState} from 'react'
 import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button'
 import appbar from '../image/appbar.png'                                                      
@@ -22,13 +23,18 @@ const style = styles();
 // const drawerWidth = 240;
 const Navbar = ({drawerWidth,handleDrawerToggle}) => {
     const[logoutOpen,setLogoutOpen]=useState(false);
-    const [editOpen, setEditOpen]= useState(false);
-    const handleClickOpen=()=>{
-      setEditOpen(true);
+    // const [editOpen, setEditOpen]= useState(false);
+    const [openModal, setOpenModal] = React.useState(false);
+    const handleOpenModal = () => {
+      setOpenModal(true);
     }
-    const handleClose=()=>{
-      setEditOpen(false);
-    }
+    const handleCloseModal = () => setOpenModal(false);
+    // const handleClickOpen=()=>{
+    //   setEditOpen(true);
+    // }
+    // const handleClose=()=>{
+    //   setOpenModal(false);
+    // }
     const handleLogout=()=>{
       console.log("handlelogout clicked")
       setLogoutOpen(!logoutOpen)
@@ -61,9 +67,17 @@ const Navbar = ({drawerWidth,handleDrawerToggle}) => {
           <Franchise/>
           <Switchcustom checked={true} text='Active'/>
           <Box sx={{border:'2px solid green', position:'relative'}}>
-          <Button variant='contained' sx={style.editAddbutton} onClick={handleClickOpen} >Edit</Button>
-          <Box sx={{position:'absolute', top:'30px', zIndex:'2'}} onClose={handleClose}>
-                {editOpen&&<EditFranchise handleClose={handleClose}/>}
+          <Button variant='contained' sx={style.editAddbutton} onClick={handleOpenModal}  >Edit</Button>
+          <Box onClose={handleCloseModal}>
+                    <Modal
+                  open={openModal}
+                  onClose={handleCloseModal}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                >
+                  <EditFranchise handleCloseModal ={handleCloseModal}/>
+                </Modal>
+                {/* {editOpen&&<EditFranchise handleClose={handleClose}/>} */}
           </Box>
           </Box>
          

@@ -1,35 +1,25 @@
 export const styles=()=>({
-    main:{
-        position:'relative',
-        top:'50%',
-        left:'50%',
-        transform:'translateY(-50%) translateX(-50%)',
-        display:'flex', 
-        flexDirection:'column',
-        alignItems:'center', 
-        width:'65%', 
-        height:'296px', 
-        borderRadius:'16px',
-        border:'2px solid grey', 
-        padding:'5px 5px 0 5px',
-        background:'white'
-    },
-    titleBox:{
-        display:'flex',
-        justifyContent:'space-between', 
-        width:'100%', border:'2px solid red',
-        position:'relative'
-    },
-    titleBoxText:{
+    title:{
         fontFamily: 'Public Sans',
         fontSize: '24px',
-        fontWeight: '700',
+        fontWeight: 700,
         lineHeight: '36px',
         letterSpacing: '0px',
         textAlign: 'left',
-        color:'black'
+        color:'#212B36',
     },
-    savebutton:{
+    textFieldLabel:{
+        fonFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: 400,
+        lineHeight: '22px',
+        letterSpacing: '0px',
+        textAlign:'left',
+        color:'#919EAB'
+    },
+    addTransactionButton:{
+        top:'8px',
+        width:'95%',
         textTransform:'none',
         height:'40px', 
         fontSize:'14px',
@@ -37,10 +27,8 @@ export const styles=()=>({
         borderRadius: '8px',
         gap: '8px',
         background: '#212B36',
-        mr:'15px',
         //styleName: Components/Button/TextSmall;
         fontFamily: 'Public Sans',
-        fontSize: '13px',
         fontWeight: '700',
         lineHeight: '22px',
         letterSpacing: '0px',
@@ -60,7 +48,6 @@ export const styles=()=>({
         color:'black',
           //styleName: Components/Button/TextSmall;
           fontFamily: 'Public Sans',
-          fontSize: '13px',
           fontWeight: '700',
           lineHeight: '22px',
           letterSpacing: '0px',

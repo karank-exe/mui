@@ -42,7 +42,7 @@ createTheme({
           },
       },
 });
-const EditFranchise = ({handleClose}) => {
+const EditFranchise = ({handleCloseModal}) => {
     const [franchise, setFranchise]=useState()
     const [password, setPassword]=useState()
     console.log(franchise,password)
@@ -51,7 +51,7 @@ const EditFranchise = ({handleClose}) => {
     <Box sx={style.main}>
         <Box sx={style.titleBox}>
         <Typography sx={style.titleBoxText}>Edit Franchise</Typography>
-        <img src={close} style={{position:'absolute', right:'0px',cursor:'pointer'}} onClick={handleClose}/>
+        <img src={close} style={{position:'absolute', right:'0px',cursor:'pointer'}} onClick={handleCloseModal}/>
         </Box>
         <ThemeProvider theme={customTheme(outerTheme)} >
         <TextField variant='outlined' label='Name' sx={{width:'95%', mt:'10px'}} onChange={(e)=>setFranchise(e.target.value)}/>
