@@ -320,7 +320,10 @@ const Settle = () => {
                                     <TableCell sx={{minWidth:10,textAlign:'center'}}>
                                     <Typography sx={style.tableDataText}>{item.pointsSettled}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:15, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.date}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:15, textAlign:'center'}}>
+                                    <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
+                                    <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
+                                    </TableCell>
                                     <TableCell sx={{minWidth:1000, textAlign:'left'}}><Typography sx={style.tablePanelText} >{item.panel}</Typography></TableCell>
                                 </TableRow>)
                             )

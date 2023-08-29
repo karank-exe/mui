@@ -345,11 +345,14 @@ const handleFilter =()=>{
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                                 (<TableRow key={index}>
-                                    <TableCell sx={{width:100}}><Typography sx={style.tableDataText}>{item.transactionAmount}</Typography></TableCell>
-                                    <TableCell sx={{width:200}}><Typography sx={style.tableDataText}>{item.date}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography sx={style.tableDataText}>{item.utrNumber}</Typography></TableCell>
-                                    <TableCell sx={{width:100}}><Typography sx={style.tableDataText}>{item.panel}</Typography></TableCell>
-                                    <TableCell sx={{width:200}}><Typography sx={style.tableDataText}>{item.User}</Typography></TableCell>
+                                    <TableCell sx={{width:50,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.transactionAmount}</Typography></TableCell>
+                                    <TableCell sx={{width:100,}}>
+                                    <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
+                                    <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
+                                    </TableCell>
+                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.utrNumber}</Typography></TableCell>
+                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{width:500,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.User}</Typography></TableCell>
                                 </TableRow>)
                             )
                         }

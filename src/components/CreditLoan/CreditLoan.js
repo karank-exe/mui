@@ -333,7 +333,10 @@ const CreditLoan = () => {
                                         </Typography>
                                         </Box>
                                     </TableCell>
-                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.date}</Typography></TableCell>
+                                    <TableCell sx={{width:100, textAlign:'center'}}>
+                                    <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
+                                    <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
+                                    </TableCell>
                                     <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
                                     <TableCell sx={{width:300, textAlign:'center'}}>
                                         <Box sx={style.bankAccountButtonBox}>

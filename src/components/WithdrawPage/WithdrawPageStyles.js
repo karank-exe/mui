@@ -119,6 +119,19 @@ export const styles=()=>({
         letterSpacing: '0px',
         textAlign: 'center',
     },
+    DateText:{
+        fontFamily:'Public Sans',
+        fontSize:'14px',
+        fontWeight:400,
+        color:'#212B36',
+    },
+    TimeText:{
+        fontFamily:'Public Sans',
+        fontSize:'14px',
+        fontWeight:400,
+        marginLeft:'-50px',
+        color:'#919EAB',
+    },
     filterButton:{
         textTransform:'none',width:'94px',
         height:'40px',

@@ -120,6 +120,19 @@ export const styles=()=>({
         textAlign: 'center',
         color:'#212B36',
     },
+    DateText:{
+        fontFamily:'Public Sans',
+        fontSize:'14px',
+        fontWeight:400,
+        color:'#212B36',
+    },
+    TimeText:{
+        fontFamily:'Public Sans',
+        fontSize:'14px',
+        fontWeight:400,
+        marginLeft:'-50px',
+        color:'#919EAB',
+    },
     transactionAmountRedText:{
         color:'#B71D18',
         fontFamily: 'Public Sans',

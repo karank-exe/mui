@@ -4,12 +4,10 @@ import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton' 
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
-import FormLabel from '@mui/material/FormLabel'
+import Modal from '@mui/material/Modal';
 import InputAdornment from '@mui/material/InputAdornment';
 import Paper from '@mui/material/Paper'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import eye from '../image/passwordEye.png'
 import search from '../image/search.png'
@@ -19,6 +17,7 @@ import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/RolesTable'
 import FilterDrawer from '../FilterDrawer/FilterDrawer'
 import AddRoles from '../AddRoles/AddRoles'
+import EditRoles from '../EditRoles/EditRoles'
 import CustomSwitch from './SwitchCustom/Switch'
 const style = styles();
 
@@ -114,14 +113,31 @@ const recordsData=[
 ]
 // console.log("recordData",recordsData)
 
-const Deposit = () => {
+const Roles = () => {
     const[records,setRecords]=useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filterOpen, setFilterOpen]= useState(false)
-    const [addDepositOpen, setAddDepositOpen]= useState(false);
-    const [value, setValue] = useState([40, 160]);
+    // const [addDepositOpen, setAddDepositOpen]= useState(false);
+    // const [value, setValue] = useState([40, 160]);
     const [showPasswords, setShowPasswords] = useState({});
+    const [openAddRoles, setOpenAddRoles] = useState(false);
+    const [openEditRoles, setOpenEditRoles] = useState(false);
     const outerTheme = useTheme()
+    const handleOpenAddRoles = () => {
+      setOpenAddRoles(true);
+    }
+    const handleCloseAddRoles = () =>{
+      setOpenAddRoles(false);
+    } 
+    const handleOpenEditRoles = () => {
+      console.log("edit opened")
+      setOpenEditRoles(true);
+    }
+    const handleCloseEditRoles = () =>{
+      console.log("edit closed")
+      setOpenEditRoles(false);
+    } 
+ 
 
     const {
         TblContainer,
@@ -153,12 +169,12 @@ const Deposit = () => {
       };
 
       
-    const handleAddDepositOpen=()=>{
-        setAddDepositOpen(true)
-    }
-    const handleAddDepositClose=()=>{
-        setAddDepositOpen(false)
-    }
+    // const handleAddDepositOpen=()=>{
+    //     setAddDepositOpen(true)
+    // }
+    // const handleAddDepositClose=()=>{
+    //     setAddDepositOpen(false)
+    // }
 
   return (
     <>
@@ -194,12 +210,19 @@ const Deposit = () => {
       {/* <Button sx={style.filterButton} variant='contained' endIcon={<img src={filterIcon}/>} onClick={handleFilter}>
       <Typography sx={style.filterButtonText}>Filters</Typography>
       </Button> */}
-      <Button sx={style.addDepositButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleAddDepositOpen}>
+      <Button sx={style.addDepositButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleOpenAddRoles}>
           <Typography sx={style.addDepositButtonText}>Add Roles</Typography>
       </Button>
-      <Box sx={{position:'absolute', top:'53px',right:'0px', zIndex:'2'}}>
-         {addDepositOpen&&<AddRoles handleAddDepositClose={handleAddDepositClose}/>}  
-      </Box>
+      <Modal
+        open={openAddRoles}
+        onClose={handleCloseAddRoles}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box onClose={handleCloseAddRoles}>
+        <AddRoles handleCloseAddRoles={handleCloseAddRoles}/>
+        </Box>
+      </Modal>
     </Box>
         </Box>
 
@@ -218,13 +241,28 @@ const Deposit = () => {
                                     </TableCell>
                                     <TableCell sx={{minWidth:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.roles}</Typography></TableCell>
                                     <TableCell sx={{minWidth:100, textAlign:'center'}}><CustomSwitch checked={item.userlock}/></TableCell>
-                                    <TableCell sx={{minWidth:800, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:100, textAlign:'center'}}>
                                         <Box sx={style.userEditButtonBox}>
                                        <Typography sx={style.tableDataText} >{item.franchiseaccess}</Typography>
                                        <Box sx={{border:'2px solid black'}}>
-                                        <Button variant='contained' sx={style.userEditButton}>
+                                        <Button variant='contained' sx={style.userEditButton} onClick={handleOpenEditRoles}>
                                             <Typography sx={style.userEditButtonText}>Edit</Typography>
                                         </Button>
+                                        <Modal
+                                              open={openEditRoles}
+                                              onClose={handleCloseEditRoles}
+                                              aria-labelledby="modal-modal-title"
+                                              aria-describedby="modal-modal-description"
+                                              sx={{
+                                                '& .MuiBackdrop-root': {
+                                                  backgroundColor: 'rgba(0, 0, 0, 0.2)', // Adjust the opacity value as needed
+                                                },
+                                              }}
+                                            >
+                                              <Box onClose={handleCloseEditRoles}>
+                                              <EditRoles handleCloseEditRoles={handleCloseEditRoles}/>
+                                              </Box>
+                                            </Modal>
                                         <IconButton sx={{width:'36px',height:'30px',borderRadius:'8px',backgroundColor:'#919EAB14',marginLeft:'10px'}}>
                                             <img src={deleterow}/>
                                         </IconButton>
@@ -240,11 +278,10 @@ const Deposit = () => {
                 />
         </Box>
     </Paper>
-    <AddRoles/>
     <FilterDrawer filterOpen={filterOpen} handleFilter={handleFilter}/>
  
     </>
   )
 }
 
-export default Deposit
+export default Roles

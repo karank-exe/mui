@@ -77,7 +77,6 @@ const Navbar = ({drawerWidth,handleDrawerToggle}) => {
                 >
                   <EditFranchise handleCloseModal ={handleCloseModal}/>
                 </Modal>
-                {/* {editOpen&&<EditFranchise handleClose={handleClose}/>} */}
           </Box>
           </Box>
          

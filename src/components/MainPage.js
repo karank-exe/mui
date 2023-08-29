@@ -31,7 +31,7 @@ import Settle from './Settle/Settle';
 import Roles from './Roles/Roles'
 import { Height } from '@mui/icons-material';
 // import { makeStyles } from '@mui/styles';
-const drawerWidth = 240;
+const drawerWidth = 200;
 const style = styles();
 console.log(style.ledger)
 
@@ -107,13 +107,16 @@ const MainPage = () => {
     // const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [open, setOpen] = React.useState(false)
-
-    function handleClick(e) {
+    const [selectedOption, setSelectedOption] = React.useState(null);
+    function handleClick(e,optionIndex) {
       e.preventDefault()
       setOpen(!open)
-      console.log('handle click',open)
+      setSelectedOption(optionIndex)
     }
-
+   const handleOptionClicked=(e,optionIndex)=>{
+    // e.preventDefault()
+    setSelectedOption(optionIndex)
+   }
 
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
@@ -129,8 +132,8 @@ const MainPage = () => {
         <Typography sx={style.overview}>OVERVIEW</Typography>
           {overview.map((data, index) => (
             data.text!=='Panel'?
-            (<ListItem key={data.text} disablePadding sx={{border:'2px solid green'}}>
-            <ListItemButton  to={`/${data.text.toLowerCase()}`}>
+            (<ListItem key={data.text} disablePadding sx={{border:'2px solid green',background: selectedOption===index?'#00A76F14':'transparent'}}>
+            <ListItemButton  to={`/${data.text.toLowerCase()}`} onClick={(e)=>handleOptionClicked(e,index)}>
               <ListItemIcon>
                 {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                 <img src={data.image}/>
@@ -139,10 +142,9 @@ const MainPage = () => {
             </ListItemButton>
           </ListItem>):(
             <div key={data.text}>
-            <ListItem key={`${data.text}-${index}`} disablePadding sx={{border:'2px solid green'}}>
-            <ListItemButton onClick={handleClick} to={`/${data.text.toLowerCase()}`}>
+            <ListItem key={`${data.text}-${index}`} disablePadding sx={{border:'2px solid green',background: selectedOption===index?'#00A76F14':'transparent'}}>
+            <ListItemButton onClick={(e)=>handleClick(e,index)} to={`/${data.text.toLowerCase()}`}>
             <ListItemIcon>
-              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
               <img src={data.image}/>
             </ListItemIcon>
             <ListItemText primary={data.text} sx={style.listItemText} />
@@ -152,7 +154,7 @@ const MainPage = () => {
           <Divider/>
           <List>
           {data.subOptions.map((subOption,subIndex)=>(
-            <ListItem key={`${subOption.text}-${subIndex}`}>
+            <ListItem key={`${subOption.text}-${subIndex}`} >
               <ListItemButton component={Link} to={`/panel/${subOption.text.toLowerCase()}`}>
               <ListItemText inset primary={subOption.text} />
               </ListItemButton>

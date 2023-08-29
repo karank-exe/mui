@@ -1,5 +1,5 @@
 export const styles=()=>({
-    BankButton:{
+    FranchiseButton:{
     display:'flex',
     justifyContent: 'space-between',    
     width: '315px',
@@ -15,7 +15,7 @@ export const styles=()=>({
         background:'grey'
     }
     },
-    BankButtonText:{
+    FranchiseButtonText:{
     marginLeft:'-90px', 
     fontSize:'14px',
     }

@@ -6,7 +6,7 @@ import Divider from '@mui/material/Divider'
 import TextField from '@mui/material/TextField'
 import close from '../image/close.png'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
-import { styles } from './AddRolesStyles'
+import { styles } from './EditRolesStyles'
 import SelectFranchiseRolesPage from './SelectFranchiseRolesPage'
 import SelectRolesRolesPage from './SelectRolesRolesPage'
 const style= styles()
@@ -46,7 +46,7 @@ createTheme({
       },
 });
 
-const AddRoles = ({handleCloseAddRoles}) => {
+const EditRoles = ({handleCloseEditRoles}) => {
     const [username, setUsername]=useState('')
     const [password, setPassword]=useState('')
     const [franchiseSelectedValue, setFranchiseSelectedValue] = useState([]);
@@ -57,8 +57,8 @@ const AddRoles = ({handleCloseAddRoles}) => {
     <div >
     <Box sx={{border:'2px solid black', background:'white',width:'337px',height:'500px',borderRadius:'16px',padding:'5px 5px 0 5px',position:'absolute',top:'50%',left:'50%',  transform:'translateY(-50%) translateX(-50%)'}}>
         <Box sx={{border:'2px solid red',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-            <Typography sx={style.title}>Add Roles</Typography>
-            <img src={close} style={{cursor:'pointer'}} onClick={handleCloseAddRoles}/>
+            <Typography sx={style.title}>Edit Roles</Typography>
+            <img src={close} style={{cursor:'pointer'}} onClick={handleCloseEditRoles}/>
         </Box>
         <Box sx={{border:'2px solid orange',mt:'10px',height:'90%',display:'flex',justifyContent:'center',flexWrap:'wrap',gap: theme => theme.spacing(1) }}>
         <ThemeProvider theme={customTheme(outerTheme)} >
@@ -68,7 +68,7 @@ const AddRoles = ({handleCloseAddRoles}) => {
         <SelectRolesRolesPage rolesSelected={rolesSelected} setRolesSelected={setRolesSelected} />
         <SelectFranchiseRolesPage franchiseSelectedValue={franchiseSelectedValue} setFranchiseSelectedValue={setFranchiseSelectedValue} />  
         <Divider style={{width:'100%'}}/>
-        <Button variant='contained' disabled={!(username&&password&&franchiseSelectedValue&&rolesSelected)} sx={style.addRolesButton}>Add Role</Button>
+        <Button variant='contained' disabled={!(username&&password&&franchiseSelectedValue&&rolesSelected)} sx={style.addRolesButton}>Save Changes</Button>
         </Box>
 
     </Box>
@@ -76,4 +76,4 @@ const AddRoles = ({handleCloseAddRoles}) => {
   )
 }
 
-export default AddRoles
+export default EditRoles

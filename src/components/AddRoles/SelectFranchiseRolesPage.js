@@ -2,18 +2,14 @@ import React,{useState}from 'react'
 import { styled, alpha } from "@mui/material/styles";
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import  CheckBox from '@mui/material/Checkbox';
+import  Checkbox from '@mui/material/Checkbox';
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-// import EditIcon from "@mui/icons-material/Edit";
-// import Divider from "@mui/material/Divider";
-// import ArchiveIcon from "@mui/icons-material/Archive";
-// import FileCopyIcon from "@mui/icons-material/FileCopy";
-// import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { green } from '@mui/material/colors';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {styles} from './AddBankRolesPageStyles'
-import { ForkLeft } from '@mui/icons-material';
+import {styles} from './SelectFranchiseRolesPageStyles'
 const style= styles();
 
 const StyledMenu = styled((props) => (
@@ -32,7 +28,7 @@ const StyledMenu = styled((props) => (
 ))(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: 6,
-    marginTop:10,
+    marginTop:5,
     marginLeft:3,
     minWidth: 310,
     color:
@@ -47,7 +43,6 @@ const StyledMenu = styled((props) => (
     "& .MuiMenuItem-root": {
       "& .MuiSvgIcon-root": {
         fontSize: 20,
-        color: theme.palette.text.secondary,
         marginRight: theme.spacing(1.5)
       },
       "&:active": {
@@ -60,7 +55,7 @@ const StyledMenu = styled((props) => (
   }
 }));
 
-const AddFranchiseRolesPage = ({franchiseSelectedValue,setFranchiseSelectedValue}) => {
+const SelectFranchiseRolesPage = ({franchiseSelectedValue,setFranchiseSelectedValue}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -91,7 +86,7 @@ const AddFranchiseRolesPage = ({franchiseSelectedValue,setFranchiseSelectedValue
         variant="contained"
         disableElevation
         onClick={handleClick}
-        sx={style.BankButton}
+        sx={style.FranchiseButton}
         endIcon={<KeyboardArrowDownIcon style={{color:'#919EAB'}} />}
       >
         <Typography sx={{fonFamily: 'Public Sans',fontSize: '14px',fontWeight: 400,
@@ -111,58 +106,88 @@ const AddFranchiseRolesPage = ({franchiseSelectedValue,setFranchiseSelectedValue
       >
         <Box sx={{border:'2px solid red',maxWidth:'310px'}}>
         <MenuItem  disableRipple selected={franchiseSelectedValue.includes('Franchise 1')}>
-          <CheckBox
-           checked={franchiseSelectedValue.includes('Franchise 1')}
-           color='success'
-           onChange={handleOptionToggle('Franchise 1')}/>
-        <Typography sx={{ fontFamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-
-        letterSpacing: '0px',
-        textAlign:'left',
-        color:'#212B36'}}>Franchise 1</Typography> 
+        <FormControlLabel
+              control={
+                <Checkbox
+                  checked={franchiseSelectedValue.includes('Franchise 1')}
+                  onChange={handleOptionToggle('Franchise 1')}
+                  sx={{
+                    color:green[800],
+                    '&.Mui-checked': {
+                      color: green[600],
+                    },
+                  }}
+                />
+              }
+              label={ <Typography sx={{ fontFamily: 'Public Sans',
+              fontSize: '14px',
+              fontWeight: 400,
+              textAlign:'left',
+              color:'#212B36'}}>Franchise 1</Typography> }
+            />
         </MenuItem>
-
-        <MenuItem disableRipple selected={franchiseSelectedValue.includes('Franchise 2')}>
-        <CheckBox
-           checked={franchiseSelectedValue.includes('Franchise 2')}
-           color='success'
-           onChange={handleOptionToggle('Franchise 2')}/>
-        <Typography sx={{ fontFamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-        letterSpacing: '0px',
-        textAlign:'left',
-        color:'#212B36'}}>Franchise 2</Typography> 
+        <MenuItem  disableRipple selected={franchiseSelectedValue.includes('Franchise 2')}>
+        <FormControlLabel
+              control={
+                <Checkbox
+                  checked={franchiseSelectedValue.includes('Franchise 2')}
+                  onChange={handleOptionToggle('Franchise 2')}
+                  sx={{
+                    color:green[800],
+                    '&.Mui-checked': {
+                      color: green[600],
+                    },
+                  }}
+                />
+              }
+              label={ <Typography sx={{ fontFamily: 'Public Sans',
+              fontSize: '14px',
+              fontWeight: 400,
+              textAlign:'left',
+              color:'#212B36'}}>Franchise 2</Typography> }
+            />
         </MenuItem>
-
         <MenuItem  disableRipple selected={franchiseSelectedValue.includes('Franchise 3')}>
-        <CheckBox
-           checked={franchiseSelectedValue.includes('Franchise 3')}
-           color='success'
-           onChange={handleOptionToggle('Franchise 3')}/>
-        <Typography sx={{ fontFamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-
-        letterSpacing: '0px',
-        textAlign:'left',
-        color:'#212B36'}}>Franchise 3</Typography> 
+        <FormControlLabel
+              control={
+                <Checkbox
+                  checked={franchiseSelectedValue.includes('Franchise 3')}
+                  onChange={handleOptionToggle('Franchise 3')}
+                  sx={{
+                    color:green[800],
+                    '&.Mui-checked': {
+                      color: green[600],
+                    },
+                  }}
+                />
+              }
+              label={ <Typography sx={{ fontFamily: 'Public Sans',
+              fontSize: '14px',
+              fontWeight: 400,
+              textAlign:'left',
+              color:'#212B36'}}>Franchise 3</Typography> }
+            />
         </MenuItem>
-
         <MenuItem  disableRipple selected={franchiseSelectedValue.includes('Franchise 4')}>
-        <CheckBox
-           checked={franchiseSelectedValue.includes('Franchise 4')}
-           color='success'
-           onChange={handleOptionToggle('Franchise 4')}/>
-        <Typography sx={{ fontFamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-
-        letterSpacing: '0px',
-        textAlign:'left',
-        color:'#212B36'}}>Franchise 4</Typography> 
+        <FormControlLabel
+              control={
+                <Checkbox
+                  checked={franchiseSelectedValue.includes('Franchise 4')}
+                  onChange={handleOptionToggle('Franchise 4')}
+                  sx={{
+                    color:green[800],
+                    '&.Mui-checked': {
+                      color: green[600],
+                    },
+                  }}
+                />
+              }
+              label={ <Typography sx={{ fontFamily: 'Public Sans',
+              fontSize: '14px',
+              fontWeight: 400,
+              textAlign:'left',
+              color:'#212B36'}}>Franchise 4</Typography> }
+            />
         </MenuItem>
         </Box>
       </StyledMenu>
@@ -170,4 +195,4 @@ const AddFranchiseRolesPage = ({franchiseSelectedValue,setFranchiseSelectedValue
   )
 }
 
-export default AddFranchiseRolesPage
+export default SelectFranchiseRolesPage
