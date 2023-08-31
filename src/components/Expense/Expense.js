@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormLabel from '@mui/material/FormLabel'
 import InputAdornment from '@mui/material/InputAdornment';
+import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -105,6 +106,12 @@ const recordsData=[
     createData('30,000',mergedTime(),9412,'Shivam-Paytm','Salary Kevin'),
     createData('25,000',mergedTime(),7452,'Shivam-IDFC','Food Bill Paid'),
     createData('20,000',mergedTime(),9574,'Shivam-Paytm','Swiggy Lunch'),
+    createData('10,000',mergedTime(),6214,'Shivam-IDFC','Recharge Mobile'),
+    createData('40,000',mergedTime(),5412,'Shivam-IDFC','Salary Kevin'),
+    createData('30,000',mergedTime(),9412,'Shivam-Paytm','Swiggy Lunch'),
+    createData('25,000',mergedTime(),7452,'Shivam-IDFC','Salary Ujjwal'),
+    createData('20,000',mergedTime(),9574,'Shivam-Paytm','Recharge Mobile'),
+    createData('10,000',mergedTime(),6214,'Shivam-IDFC','Food Bill Paid'),
     createData('10,000',mergedTime(),6214,'Shivam-IDFC','Recharge Mobile'),
     createData('40,000',mergedTime(),5412,'Shivam-IDFC','Salary Kevin'),
     createData('30,000',mergedTime(),9412,'Shivam-Paytm','Swiggy Lunch'),
@@ -309,9 +316,16 @@ const Expense = () => {
       <Button sx={style.addExpenseButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleAddExpenseOpen}>
           <Typography sx={style.addExpenseButtonText}>Add Expense</Typography>
       </Button>
-      <Box sx={{position:'absolute', top:'53px',right:'0px', zIndex:'2'}}>
-         {addExpenseOpen&&<AddExpense handleAddExpenseClose={handleAddExpenseClose}/>}  
-      </Box>
+      <Modal
+        open={addExpenseOpen}
+        onClose={handleAddExpenseClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box onClose={handleAddExpenseClose}>
+        <AddExpense handleAddExpenseClose={handleAddExpenseClose}/>
+        </Box>
+      </Modal>
     </Box>
         </Box>
 

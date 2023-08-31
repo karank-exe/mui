@@ -46,7 +46,7 @@ createTheme({
       },
 });
 
-const AddBankTransfer = ({handleAddBankTransferClose}) => {
+const AddBankTransfer = ({handleCloseAddBankTransfer}) => {
     const [transactionAmount, setTransactionAmount]=useState()
     const [utr, setUtr]=useState()
     const [fromBankSelectedValue, setFromBankSelectedValue] = useState('');
@@ -57,10 +57,10 @@ const AddBankTransfer = ({handleAddBankTransferClose}) => {
     const outerTheme = useTheme()
   return (
     <div>
-    <Box sx={{border:'2px solid black', background:'white',width:'670px',height:'350px',borderRadius:'16px',boxShadow:3,padding:'5px 5px 0 5px'}}>
+    <Box sx={{border:'2px solid black', background:'white',width:'670px',height:'350px',borderRadius:'16px',boxShadow:3,padding:'5px 5px 0 5px',position:'absolute',top:'50%',left:'50%',transform:'translateY(-50%) translateX(-50%)'}}>
         <Box sx={{border:'2px solid red',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
             <Typography sx={style.title}>Add Credit/Debit</Typography>
-            <img src={close} style={{cursor:'pointer'}} onClick={handleAddBankTransferClose}/>
+            <img src={close} style={{cursor:'pointer'}} onClick={handleCloseAddBankTransfer}/>
         </Box>
         <Box sx={{border:'2px solid orange',mt:'10px',height:'85%',display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap: theme => theme.spacing(1) }}>
         <ThemeProvider theme={customTheme(outerTheme)} >

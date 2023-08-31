@@ -37,6 +37,13 @@ createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
+createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
+createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 ]
 const BanksPage = () => {
     const [records, setRecords] = React.useState(recordsdata)

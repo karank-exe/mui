@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
 // import { Table, TableHead, TableRow, TableCell, makeStyles, TablePagination, TableSortLabel } from '@material-ui/core'
-import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } from '@mui/material';
-
+import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } from '@mui/material';  
 export default function useTable(records, headCells,filterFn) {
 
     // const classes = useStyles();

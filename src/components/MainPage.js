@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Routes,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Link,useNavigate} from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
@@ -29,7 +29,6 @@ import Expense from './Expense/Expense';
 import BankTransfer from './BankTransfer/BankTransfer';
 import Settle from './Settle/Settle';
 import Roles from './Roles/Roles'
-import { Height } from '@mui/icons-material';
 // import { makeStyles } from '@mui/styles';
 const drawerWidth = 200;
 const style = styles();
@@ -102,21 +101,69 @@ const usage=[
 
     },
 ]
+//here i have made state variable "selectedOption" for overview Option, "selectedSubOption" for suboption in the Panel Option in overview section and "selectedUsageOption" state variable for the option of the
+//usage section and their handling function are also created
+
+/***************IMPORTANT***************************** 
+as we have to give styling to the option and suboption when user clicks on it we have to use the state variable created which will keep track of the selected options or suboption
+IMP 1)here we have to use e.preventDefault() in the handling function so that it dont re-render page if we dont add this then state variable will again have default value which is null
+and styling wont be applied 
+Problem of point 1 :- using this e.preventDefault() wont allow the routing set to each ListItem previously[check previous commits to see the previous change] hence when user click
+on the option the styling will be applied to that selected option but routing wont happen and we wont see the page corresponding to that option selected
+solution:-IMP 2) "to solve the problem of point 1" we have to use Usenavigate hook and it handling function where we set the state variable for the styling we also set routing using useNavigate hook
+Problem occured in point 2:- using this i got an error of the saying useNavigate must be descendant of the Router[Browser router] as previously we were Router[BrowserRouter as Router]
+in the return (..........some code) of this page [check previous commit Router is wrapping all the things inside the return(.......) of the MainPage.js]
+solution:- to solve this we have to use Router [BrowserRouter as Router] in the App.js which Wraps the whole MainPaje.js component "check App.js"
+App.js should be something like this 
+<Router>
+<MainPage/>
+</Router> 
+**/
 
 const MainPage = () => {
     // const classes = useStyles();
+    const navigate = useNavigate();
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [open, setOpen] = React.useState(false)
-    const [selectedOption, setSelectedOption] = React.useState(null);
+    const [open, setOpen] = React.useState(false)  // state variable for suboption visibilty of the Panel option in overview section
+    const [selectedOption, setSelectedOption] = React.useState(null);     //state for 'overview' section options   
+    const [selectedSubOption, setSelectedSubOption]=React.useState(null)  //state for Panel suboptions in 'overview' section
+    //this will handle visibilty of the suboptions for Panel option in 'overview' section
+    const [selectedUsageOption, setSelectedUsageOption]= React.useState(null)  // state for 'usage' section
     function handleClick(e,optionIndex) {
       e.preventDefault()
-      setOpen(!open)
-      setSelectedOption(optionIndex)
+      setOpen(!open)   // for toggling the visibilty of the suboptions of the Panel
+      setSelectedOption(optionIndex) 
+      setSelectedSubOption(null) // when user click on the Panel option in the 'overview' section make sure to set setSelectedSubOption to null
+      //as this will remove the styling for the suboptions[if this line was not written then if user click on panel option then select any suboption ->
+      // now again if user click on the Panel option the suboption will be hidden but the selected styling for the suboption wont get removed]
+      setSelectedUsageOption(null) // set 'selectedUsageOption' state variable to null so that it removes the styling from the option from the 'usage' section if previously selecte
+      navigate(`/${overview[optionIndex].text.toLowerCase()}`);  // do the routing to the selected option [Panel option]
+    }
+    const handleSubOptionClicked=(e,index,subOptionIndex)=>{
+      e.preventDefault()
+      setSelectedOption(null)  // this line removes the styling from the option when the user selects the any suboption from the Panel Option 
+      //as we need to see the styling on the selected suboption only if we did not write this line then 'selectedOption' state variable would have some previous value 
+      //of the previously selected option[value stored in 'selectedOption' state variable is the 'index' of the option]
+      setSelectedSubOption(subOptionIndex) // store index of the suboption to selectedSubOption to set the styling to the suboption selected
+      setSelectedUsageOption(null) // set 'selectedUsageOption' state variable to null so that it removes the styling from the option from the usage section if previously selecte
+      navigate(`/panel/${overview[index].subOptions[subOptionIndex].text.toLowerCase()}`) // do the routing to the selected suboption
     }
    const handleOptionClicked=(e,optionIndex)=>{
     // e.preventDefault()
-    setSelectedOption(optionIndex)
-   }
+    setSelectedOption(optionIndex)  // store the index of the option in 'selectedOption' state variable to give the styling to selected option
+    setSelectedSubOption(null) // make sure to set 'selectedSubOption' state variable to null this remove the styling from the suboptions if it was previously selected by user
+    setSelectedUsageOption(null) // set 'selectedUsageOption' state variable to null so that it removes the styling from the option from the usage section if previously selecte
+    navigate(`/${overview[optionIndex].text.toLowerCase()}`); // do the routing to the selected option
+   } 
+  //--------------handling state variable for usage section for the styling--------------------------//
+  const handleUsageOptionClicked=(e,usageIndex)=>{
+    e.preventDefault()
+    setSelectedUsageOption(usageIndex)
+    setSelectedOption(null)
+    setSelectedSubOption(null)
+    navigate(`/${usage[usageIndex].text.toLowerCase()}`)
+  }
+  //--------------handling state variable for usage section for the styling--------------------------//
 
     const handleDrawerToggle = () => {
       setMobileOpen(!mobileOpen);
@@ -132,31 +179,31 @@ const MainPage = () => {
         <Typography sx={style.overview}>OVERVIEW</Typography>
           {overview.map((data, index) => (
             data.text!=='Panel'?
-            (<ListItem key={data.text} disablePadding sx={{border:'2px solid green',background: selectedOption===index?'#00A76F14':'transparent'}}>
-            <ListItemButton  to={`/${data.text.toLowerCase()}`} onClick={(e)=>handleOptionClicked(e,index)}>
+            (<ListItem key={data.text} disablePadding sx={selectedOption===index?style.listItemSelected:style.listItem}>
+            <ListItemButton onClick={(e)=>handleOptionClicked(e,index)}>
               <ListItemIcon>
                 {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                 <img src={data.image}/>
               </ListItemIcon>
-              <ListItemText primary={data.text} sx={style.listItemText} />
+              <ListItemText><Typography sx={selectedOption===index?style.listItemTextSelected:style.listItemText}>{data.text}</Typography></ListItemText>
             </ListItemButton>
           </ListItem>):(
             <div key={data.text}>
-            <ListItem key={`${data.text}-${index}`} disablePadding sx={{border:'2px solid green',background: selectedOption===index?'#00A76F14':'transparent'}}>
+            <ListItem key={`${data.text}-${index}`} disablePadding sx={selectedOption===index?style.listItemSelected:style.listItem}>
             <ListItemButton onClick={(e)=>handleClick(e,index)} to={`/${data.text.toLowerCase()}`}>
             <ListItemIcon>
               <img src={data.image}/>
             </ListItemIcon>
-            <ListItemText primary={data.text} sx={style.listItemText} />
+            <ListItemText><Typography sx={selectedOption===index?style.listItemTextSelected:style.listItemText}>{data.text}</Typography></ListItemText>
           </ListItemButton>
           </ListItem>
           <Collapse in={open} timeout="auto" unmountOnExit>
           <Divider/>
           <List>
           {data.subOptions.map((subOption,subIndex)=>(
-            <ListItem key={`${subOption.text}-${subIndex}`} >
-              <ListItemButton component={Link} to={`/panel/${subOption.text.toLowerCase()}`}>
-              <ListItemText inset primary={subOption.text} />
+            <ListItem key={`${subOption.text}-${subIndex}`} sx={selectedSubOption===subIndex?style.listItemSelected:style.listItem} >
+              <ListItemButton component={Link} onClick={(e)=> handleSubOptionClicked(e,index,subIndex)} >
+              <ListItemText><Typography sx={selectedSubOption===subIndex?style.subItemTextSelected:style.subItemText}>{subOption.text}</Typography></ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
@@ -169,13 +216,12 @@ const MainPage = () => {
         <Typography sx={style.usage}>USAGE</Typography>
         <List>
           {usage.map((data, index) => (
-            <ListItem key={data.text} disablePadding>
-              <ListItemButton  to={`/${data.text.toLowerCase()}`}>
+            <ListItem key={data.text} disablePadding sx={selectedUsageOption===index?style.listItemSelected:style.listItem}>
+              <ListItemButton onClick={(e)=>handleUsageOptionClicked(e,index)}  >
                 <ListItemIcon>
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                   <img src={data.image}/>
                 </ListItemIcon>
-                <ListItemText primary={data.text} />
+                <ListItemText><Typography sx={selectedUsageOption===index?style.listItemTextSelected:style.listItemText}>{data.text}</Typography></ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
@@ -184,7 +230,7 @@ const MainPage = () => {
     );
     
   return (
-    <Router>
+
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* Navbar and sidebar starts */}
@@ -229,21 +275,20 @@ const MainPage = () => {
       >
         {/* <Toolbar/> */}
         <Routes>
-          <Route path='/banks' element={<BanksPage/>} />
-          <Route path='/analytics' element={<Analytics/>} />
-          <Route path='/panel/:panelId' element={<Panel/>}/>
-          <Route path='/withdraw' element={<WithdrawPage/>} />
-          <Route path='/deposit' element={<Deposit/>} />
-          <Route path='/credit/loans' element={<CreditLoan/>} />
-          <Route path='/expense' element={<Expense/>} />
-          <Route path='/banktransfer' element={<BankTransfer/>} />
-          <Route path='/settle' element={<Settle/>} />
-          <Route path='/roles' element={<Roles/>} />
-
+          <Route path='/banks' element={<BanksPage navigate={navigate}/>} />
+          <Route path='/analytics' element={<Analytics navigate={navigate}/>} />
+          <Route path='/panel/:panelId' element={<Panel navigate={navigate}/>}/>
+          <Route path='/withdraw' element={<WithdrawPage navigate={navigate}/>} />
+          <Route path='/deposit' element={<Deposit navigate={navigate}/>} />
+          <Route path='/credit/loans' element={<CreditLoan navigate={navigate}/>} />
+          <Route path='/expense' element={<Expense navigate={navigate}/>} />
+          <Route path='/banktransfer' element={<BankTransfer navigate={navigate}/>} />
+          <Route path='/settle' element={<Settle navigate={navigate}/>} />
+          <Route path='/roles' element={<Roles navigate={navigate}/>} />
         </Routes>
       </Box>
     </Box>
-    </Router>
+
   )
 }
 

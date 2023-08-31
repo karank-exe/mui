@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormLabel from '@mui/material/FormLabel'
 import InputAdornment from '@mui/material/InputAdornment';
+import Modal from '@mui/material/Modal';
 import Paper from '@mui/material/Paper'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -109,6 +110,9 @@ const recordsData=[
     createData('25,000',mergedTime(),7452,'Shivam-IDFC','Shivam-Paytm'),
     createData('20,000',mergedTime(),9574,'Shivam-Paytm','Shivam-IDFC'),
     createData('10,000',mergedTime(),6214,'Shivam-IDFC','Shivam-Paytm'),
+    createData('25,000',mergedTime(),7452,'Shivam-IDFC','Shivam-Paytm'),
+    createData('20,000',mergedTime(),9574,'Shivam-Paytm','Shivam-IDFC'),
+    createData('10,000',mergedTime(),6214,'Shivam-IDFC','Shivam-Paytm'),
 ]
 console.log("recordData",recordsData)
 
@@ -154,10 +158,10 @@ const BankTransfer = () => {
       }
       setValue([newFirstValue, newSecondValue]);
     };
-    const handleAddBankTransferOpen=()=>{
+    const handleOpenAddBankTransfer=()=>{
         setAddBankTransferOpen(true)
     }
-    const handleAddBankTransferClose=()=>{
+    const handleCloseAddBankTransfer=()=>{
         setAddBankTransferOpen(false)
     }
 
@@ -304,12 +308,19 @@ const BankTransfer = () => {
       <Button sx={style.filterButton} variant='contained' endIcon={<img src={filterIcon}/>} onClick={handleFilter}>
       <Typography sx={style.filterButtonText}>Filters</Typography>
       </Button>
-      <Button sx={style.addBankTransferButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleAddBankTransferOpen}>
+      <Button sx={style.addBankTransferButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleOpenAddBankTransfer}>
           <Typography sx={style.addBankTransferButtonText}>Add Bank Transfer</Typography>
       </Button>
-      <Box sx={{position:'absolute', top:'53px',right:'0px', zIndex:'2'}}>
-         {addBankTransferOpen&&<AddBankTransfer handleAddBankTransferClose={handleAddBankTransferClose}/>}  
-      </Box>
+      <Modal
+        open={addBankTransferOpen}
+        onClose={handleCloseAddBankTransfer}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box onClose={handleCloseAddBankTransfer}>
+        <AddBankTransfer handleCloseAddBankTransfer={handleCloseAddBankTransfer}/>
+        </Box>
+      </Modal>
     </Box>
         </Box>
 

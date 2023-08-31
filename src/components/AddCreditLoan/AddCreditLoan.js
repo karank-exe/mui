@@ -61,7 +61,7 @@ const AddCreditLoan = ({handleAddCreditLoanClose}) => {
     const outerTheme = useTheme()
   return (
     <div>
-    <Box sx={{border:'2px solid black', background:'white',width:'670px',height:'350px',borderRadius:'16px',boxShadow:3,padding:'5px 5px 0 5px'}}>
+    <Box sx={{border:'2px solid black', background:'white',width:'670px',height:'350px',borderRadius:'16px',boxShadow:3,padding:'5px 5px 0 5px',position:'absolute',top:'50%',left:'50%',transform:'translateY(-50%) translateX(-50%)'}}>
         <Box sx={{border:'2px solid red',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
             <Typography sx={style.title}>Add Credit/Debit</Typography>
             <img src={close} style={{cursor:'pointer'}} onClick={handleAddCreditLoanClose}/>

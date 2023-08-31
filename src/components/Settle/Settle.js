@@ -106,6 +106,9 @@ const recordsData=[
     createData('25,000',mergedTime(),'Panel 1'),
     createData('20,000',mergedTime(),'Panel 2'),
     createData('10,000',mergedTime(),'Panel 1'),
+    createData('25,000',mergedTime(),'Panel 1'),
+    createData('20,000',mergedTime(),'Panel 2'),
+    createData('10,000',mergedTime(),'Panel 1'),
 ]
 console.log("recordData",recordsData)
 

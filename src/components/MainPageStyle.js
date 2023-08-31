@@ -19,14 +19,41 @@ textAlign: 'left',
 color:'#919EAB',
 ml:'20px'
 },
+listItem:{
+background:'white'
+},
+listItemSelected:{
+background:'#00A76F14'
+},
 listItemText:{
-    //styleName: Components/Nav/ItemBase/Default;
 fontFamily: 'Public Sans',
+color:'#637381',
 fontSize: '14px',
 fontWeight: '500',
-lineHeight: '22px',
 letterSpacing: '0px',
 textAlign: 'left',
+},
+listItemTextSelected:{
+fontFamily: 'Public Sans',
+fontSize: '14px',
+color:'#00A76F',
+fontWeight: '600',
+textAlign: 'left',
+},
+subItemText:{
+fontFamily: 'Public Sans',
+color:'#637381',
+fontSize: '14px',
+fontWeight: '500',
+letterSpacing: '0px',
+textAlign: 'center',
+},
+subItemTextSelected:{
+fontFamily: 'Public Sans',
+fontSize: '14px',
+color:'#00A76F',
+fontWeight: '600',
+textAlign: 'center',
 },
 usage:{
     //styleName: Components/Nav/Subheader;

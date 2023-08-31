@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import FormLabel from '@mui/material/FormLabel'
 import InputAdornment from '@mui/material/InputAdornment';
+import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -308,9 +309,16 @@ const Deposit = () => {
       <Button sx={style.addDepositButton} variant='contained' startIcon={<AddIcon style={{color:'black'}}/>} onClick={handleAddDepositOpen}>
           <Typography sx={style.addDepositButtonText}>Add Deposit</Typography>
       </Button>
-      <Box sx={{position:'absolute', top:'53px',right:'0px', zIndex:'2'}}>
-         {addDepositOpen&&<AddDeposit handleAddDepositClose={handleAddDepositClose}/>}  
-      </Box>
+      <Modal
+        open={addDepositOpen}
+        onClose={handleAddDepositClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box onClose={handleAddDepositClose}>
+        <AddDeposit handleAddDepositClose={handleAddDepositClose}/>
+        </Box>
+      </Modal>
     </Box>
         </Box>
 
