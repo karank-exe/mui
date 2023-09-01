@@ -30,7 +30,7 @@ import BankTransfer from './BankTransfer/BankTransfer';
 import Settle from './Settle/Settle';
 import Roles from './Roles/Roles'
 // import { makeStyles } from '@mui/styles';
-const drawerWidth = 200;
+const drawerWidth = 180;
 const style = styles();
 console.log(style.ledger)
 
@@ -231,8 +231,8 @@ const MainPage = () => {
     
   return (
 
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box sx={{ display: 'flex'}}>
+     <CssBaseline/>
       {/* Navbar and sidebar starts */}
       <Navbar drawerWidth={drawerWidth} handleDrawerToggle={handleDrawerToggle}/>
       <Box
@@ -271,7 +271,7 @@ const MainPage = () => {
       {/* Navbar and sidebar end */}
       <Box
         component="main"
-        sx={{ flexGrow: 1, p:3, width: { sm: `calc(100% - ${drawerWidth}px)`}, border:'2px solid orange',mt:'68px' }}
+        sx={{ flexGrow: 1, width: { sm: `calc(100% - ${drawerWidth}px)`}, border:'2px solid orange',mt:'68px',padding:2}}
       >
         {/* <Toolbar/> */}
         <Routes>

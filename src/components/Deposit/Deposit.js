@@ -329,15 +329,15 @@ const Deposit = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.transactionAmount}</Typography></TableCell>
-                                    <TableCell sx={{width:100, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:50,width:100,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.transactionAmount}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:50,width:150, textAlign:'center'}}>
                                     <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
                                     <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
-                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.panel}</Typography></TableCell>
-                                    <TableCell sx={{width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.bankAccount}</Typography></TableCell>
-                                    <TableCell sx={{width:300, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:50,width:130, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:50,width:130, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:50,width:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.bankAccount}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:100,width:1000, textAlign:'center'}}>
                                         <Box sx={style.userEditButtonBox}>
                                        <Typography sx={style.tableDataText} >{item.user}</Typography>
                                         <Button variant='contained' sx={style.userEditButton}>

@@ -43,11 +43,13 @@ const Navbar = ({drawerWidth,handleDrawerToggle}) => {
     <AppBar
     position="fixed"
     sx={{
-      width: { sm: `calc(100% - ${drawerWidth}px)` },
-      ml: { sm: `${drawerWidth}px` }
+      width: { sm: `calc(100% - ${drawerWidth}px)`},
+      ml: { sm: `${drawerWidth}px` },
+      backgroundColor:'white',
+      boxShadow:0,
     }}
   >
-    <Toolbar sx={{backgroundColor:'white',border:'2px solid black' ,display:'flex',justifyContent:'space-between'}}>
+    <Toolbar sx={{border:'2px solid black',display:'flex',justifyContent:'space-between',marginLeft:'0px',boxShadow:0,boxSizing:'border-box'}}>
       <IconButton
         color="inherit"
         aria-label="open drawer"

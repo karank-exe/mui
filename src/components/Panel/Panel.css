@@ -1,0 +1,7 @@
+.custom-input {
+    padding-right: 24px; /* Add padding for the icon */
+    background-image: url("C:\Users\karan\OneDrive\Desktop\mui\mui\src\components\image\date.png"); /* Replace with your icon path */
+    background-repeat: no-repeat;
+    background-position: right center; /* Adjust the position as needed */
+    background-color: red;
+  }

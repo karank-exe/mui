@@ -18,7 +18,7 @@ const Panel = () => {
      }
      else if (panelId==='panel4'){
         panelContent=<Panel4/>;
-     }
+     } 
   return (
     <div>
         {panelContent}

@@ -105,10 +105,10 @@ export const styles=()=>({
     height: '30px',
     padding: '4px 8px 4px 8px',
     borderRadius: '8px',
-    gap: '8px',
+    marginRight:'5px',
     background: '#919EAB14',
     color:'black',
-    ml:'20px',
+
     '&:hover':{
         background:'#919EAB14'
     },

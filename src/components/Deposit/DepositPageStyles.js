@@ -1,15 +1,17 @@
 export const styles=()=>({
     cardContainer:{
-        width:'100%',
+        width:'98%',
         border:'2px solid green', 
         display:'flex',
         justifyContent:'space-between',
+        alignItems:'center'
     },
     card:{
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'220px',
+        width:'12%',
+        height:'90%',
         borderRadius:'16px',
         boxShadow:3,
         padding:3
@@ -18,7 +20,7 @@ export const styles=()=>({
         display:'flex',
         justifyContent:'space-between',
         border:'2px solid black',
-        width:'80%',
+        width:'100%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
@@ -32,13 +34,13 @@ export const styles=()=>({
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'18px',
+        fontSize:'14px',
         color:'#212B36'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '16px',
+         fontSize: '12px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',

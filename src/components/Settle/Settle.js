@@ -320,14 +320,14 @@ const Settle = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{minWidth:10,textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:100,textAlign:'center',width:200}}>
                                     <Typography sx={style.tableDataText}>{item.pointsSettled}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:15, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:100, textAlign:'center',width:200}}>
                                     <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
                                     <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:1000, textAlign:'left'}}><Typography sx={style.tablePanelText} >{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:300, textAlign:'left'}}><Typography sx={style.tablePanelText} >{item.panel}</Typography></TableCell>
                                 </TableRow>)
                             )
                         }

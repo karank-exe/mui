@@ -9,8 +9,8 @@ import Button from '@mui/material/Button';
 import Controls from '../control/Controls';
 import Search from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
-import Switchcustom from '../Switch/Switch';
 import Box from '@mui/material/Box';
+import CustomSwitch from './SwitchCustom/Switch'
 const style = styles();
 const headCells = [
     { id: 'accountholdername', label: 'Account Holder Name' },
@@ -106,17 +106,17 @@ const handleViewClick=(user)=>{
                                               {
                                                   recordsAfterPagingAndSorting().map((item,index) =>
                                                       (<TableRow key={index}>
-                                                          <TableCell sx={{width:200}}>{item.accountholdername}</TableCell>
-                                                          <TableCell sx={{width:200}}>{item.bankname}</TableCell>
-                                                          <TableCell sx={{width:200}}>{item.accounttype}</TableCell>
-                                                          <TableCell sx={{width:200}}>{item.currentbalance}</TableCell>
-                                                          <TableCell sx={{width:100, textAlign:'right', border:'2px solid red',p:0,background:'white'}}><Switchcustom checked={item.status} /></TableCell>
-                                                          <TableCell sx={{width:'400px'}}>
+                                                          <TableCell sx={{minWidth:50}}>{item.accountholdername}</TableCell>
+                                                          <TableCell sx={{minWidth:50}}>{item.bankname}</TableCell>
+                                                          <TableCell sx={{minWidth:50}}>{item.accounttype}</TableCell>
+                                                          <TableCell sx={{minWidth:50}}>{item.currentbalance}</TableCell>
+                                                          <TableCell sx={{minWidth:50, textAlign:'center', border:'2px solid red',p:0,background:'white'}}><CustomSwitch checked={item.status} /></TableCell>
+                                                          <TableCell sx={{minWidth:100,width:700}}>
                                                             <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid black', alignItems:'center'}}>
                                                               <Box sx={item.usedfor==='Withdrawal'? style.withdrawstyle:style.depositstyle}>
                                                               {item.usedfor}
                                                               </Box>
-                                                              <Box>
+                                                              <Box >
                                                                 <Button variant='contained' sx={style.button}>
                                                                  Edit
                                                                 </Button>

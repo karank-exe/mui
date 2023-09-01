@@ -130,7 +130,8 @@ export const styles=()=>({
         fontFamily:'Public Sans',
         fontSize:'14px',
         fontWeight:400,
-        marginLeft:'-50px',
+        marginLeft:'-60px',
+        textAlign:'center',
         color:'#919EAB',
     },
     tablePanelText:{

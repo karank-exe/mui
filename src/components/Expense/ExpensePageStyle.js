@@ -9,7 +9,8 @@ export const styles=()=>({
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'220px',
+        width:'18%',
+        height:'220px',
         borderRadius:'16px',
         boxShadow:3,
         padding:3
@@ -32,13 +33,13 @@ export const styles=()=>({
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'18px',
+        fontSize:'14px',
         color:'#212B36'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '16px',
+         fontSize: '10px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',

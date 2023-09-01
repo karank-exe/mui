@@ -41,7 +41,7 @@ bellBoxBadge:{
 },
 avatarImg:{
     borderRadius:50, 
-    marginLeft:'20px',
+    marginLeft:'10px',
 },
 statusImg:{
     position:'absolute',
