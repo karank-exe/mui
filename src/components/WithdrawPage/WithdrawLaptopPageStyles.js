@@ -1,4 +1,4 @@
-export const styles=()=>({
+export const Laptopstyles=()=>({
     cardContainer:{
         width:'100%',
         border:'2px solid green', 
@@ -9,38 +9,36 @@ export const styles=()=>({
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'220px',
+        width:'18%',height:'200px',
         borderRadius:'16px',
         boxShadow:3,
-        padding:2,
-        overflow:'hidden'
+        padding:0
     },
     titleBox:{
         display:'flex',
-       // justifyContent:'space-between',
+        justifyContent:'space-around',
         border:'2px solid black',
-        width:'106%',
+        width:'100%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
         display:'flex',
-       // justifyContent:'space-between',
+        justifyContent:'space-between',
         border:'2px solid black',
-        width:'111%',
+        width:'100%',
         alignItems:'center'
     },
     text:{
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'15px',
-        color:'#212B36',
-        textWrap:'noWrap'
+        fontSize:'12px',
+        color:'#212B36'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '16px',
+         fontSize: '12px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',
@@ -49,13 +47,15 @@ export const styles=()=>({
     },
     rateBox:{
         display:'flex',
+        //justifyContent:'center',
+        paddingLeft:'5px',
         border:'2px solid green',
         alignItems:'center'
     },
     rateText:{
         //styleName: Desktop/H4;
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         lineHeight: '36px',
         letterSpacing: '0px',
@@ -63,7 +63,7 @@ export const styles=()=>({
     },
     rateGreenTextGradient:{
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         textAlign: 'left',
         background: 'linear-gradient(135deg, #22C55E 0%, #118D57 100%)',
@@ -72,7 +72,7 @@ export const styles=()=>({
     },
     rateRedTextGradient:{
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         textAlign: 'left',
         background: 'linear-gradient(135deg, #FF5630 0%, #B71D18 100%)',
@@ -81,24 +81,21 @@ export const styles=()=>({
     },
     descriptionBox:{
         display:'flex',
-        gap:'5px',
         border:'2px solid black',
-        //justifyContent:'space-between', 
-        width:'113%',
+        justifyContent:'space-between', 
+        width:'100%',
         alignItems:'center'
     },
     percentageText:{
         fontFamily: 'Public Sans',
-        fontSize: '15px',
+        fontSize: '0.75rem',
         fontWeight: '600',
-        lineHeight: '22px',
-        letterSpacing: '0px',
         textAlign: 'left',
-        color:'#212B36'
+        color:'black'
     },
     lastWeekText:{
         fontFamily: 'Public Sans',
-        fontSize: '15px',
+        fontSize: '10px',
         fontWeight: '400',
         lineHeight: '22px',
         letterSpacing: '0px',
@@ -124,13 +121,14 @@ export const styles=()=>({
     },
     DateText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'12px',
         fontWeight:400,
         color:'#212B36',
+        textWrap:'noWrap'
     },
     TimeText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'11px',
         fontWeight:400,
         marginLeft:'-50px',
         color:'#919EAB',

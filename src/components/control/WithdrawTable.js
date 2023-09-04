@@ -36,7 +36,7 @@ export default function useTable(records, headCells,filterFn) {
             {props.children}
         </Table>
     )
-
+ 
     const TblHead = props => {
 
         const handleSortRequest = cellId => {
@@ -50,7 +50,7 @@ export default function useTable(records, headCells,filterFn) {
                 {
                     headCells.map(headCell => (
                         <TableCell key={headCell.id}
-                        sx={{textAlign:'center', border:'2px solid red'}}
+                        sx={{textAlign:'center', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 1px 7px 10px'}}}
                             sortDirection={orderBy === headCell.id ? order : false}>
                             {headCell.disableSorting ? headCell.label :
                                 <TableSortLabel
@@ -65,6 +65,7 @@ export default function useTable(records, headCells,filterFn) {
                                             letterSpacing: '0px',
                                             textAlign: 'left',
                                             color:'#637381',
+                                            '&.MuiTypography-root':{textWrap:'noWrap'}
                                          }}>
                                     {headCell.label}
                                     </Typography>

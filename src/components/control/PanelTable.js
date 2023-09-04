@@ -42,7 +42,7 @@ export default function useTable(records, headCells,filterFn) {
                                         onClick={() => { handleSortRequest(headCell.id) }}>
                                         <Typography sx={{//styleName: Components/TableTh;
                                                 fontFamily: 'Public Sans',
-                                                fontSize: '14px',
+                                                fontSize: '13px',
                                                 fontWeight: '600',
                                                 lineHeight: '24px',
                                                 letterSpacing: '0px',
@@ -63,7 +63,7 @@ export default function useTable(records, headCells,filterFn) {
                                         onClick={() => { handleSortRequest(headCell.id) }}>
                                         <Typography sx={{//styleName: Components/TableTh;
                                                 fontFamily: 'Public Sans',
-                                                fontSize: '14px',
+                                                fontSize: '13px',
                                                 fontWeight: '600',
                                                 lineHeight: '24px',
                                                 letterSpacing: '0px',

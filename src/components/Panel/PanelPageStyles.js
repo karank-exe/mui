@@ -110,7 +110,7 @@ export const styles=()=>({
         fontFamily:'Public Sans',
         fontSize:'14px',
         fontWeight:400,
-        marginLeft:'-50px',
+        marginLeft:'-70px',
         color:'#919EAB',
     },
     userEditButtonBox:{

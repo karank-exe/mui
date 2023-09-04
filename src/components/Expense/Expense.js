@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Box from '@mui/material/Box'
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -15,13 +16,13 @@ import upCircle from '../image/upcircle.png'
 import downCircle from '../image/downCircle.png'
 import filterIcon from '../image/filterButtonIcon.png'
 import { styles } from './ExpensePageStyle';
+import { Laptopstyles } from './ExpenseLaptopPageStyle';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/ExpenseTable'
 import FilterDrawer from '../FilterDrawer/FilterDrawer'
 // import AddDeposit from '../AddDeposit/AddDeposit'
 // import AddCreditLoan from '../AddCreditLoan/AddCreditLoan'
 import AddExpense from '../AddExpense/AddExpense'
-const style = styles();
 
 //----------------custom Theme for search field-------------------//
 const customTheme=(outerTheme)=>
@@ -122,6 +123,9 @@ const recordsData=[
 console.log("recordData",recordsData)
 
 const Expense = () => {
+    const isLaptopScreen = useMediaQuery('(max-width: 1250px)')
+    console.log("laptop",isLaptopScreen)
+    const style = isLaptopScreen? Laptopstyles(): styles()
     const[records,setRecords]=useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filterOpen, setFilterOpen]= useState(false)
@@ -176,7 +180,7 @@ const Expense = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Withdrawal</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -194,7 +198,7 @@ const Expense = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Deposits</Typography> 
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -212,7 +216,7 @@ const Expense = () => {
         <Box sx={style.card}>
             <Box sx={style.loanOrCreditTitleBox}>
                 <Typography sx={style.text}>Loans Borrowed</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'9px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -230,8 +234,8 @@ const Expense = () => {
         <Box sx={style.card}>
             <Box sx={style.loanOrCreditTitleBox}>
                 <Typography sx={style.text}>Credits Given</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
-                <Typography sx={style.todayText}>Today</Typography>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
+                <Typography sx={style.todayText}>Today</Typography> 
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
             </Box>
@@ -248,7 +252,7 @@ const Expense = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Expenses</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -336,16 +340,16 @@ const Expense = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{minWidth:50,width:100,textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:50,width:200,textAlign:'center'}}>
                                     <Typography sx={style.tableDataText}>{item.transactionAmount}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:50, width:150,textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:50, width:380,textAlign:'center','&.MuiTableCell-root':{padding:0}}}>
                                     <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
                                     <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:50,width:130,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
-                                    <TableCell sx={{minWidth:50,width:130,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.bankAccount}</Typography></TableCell>
-                                    <TableCell sx={{minWidth:100,width:1000,textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:50,width:200,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.utrNumber}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:50,width:300,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.bankAccount}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:100,width:1000,textAlign:'center','&.MuiTableCell-root':{padding:'16px 10px 16px 4px'}}}>
                                         <Box sx={style.reasonBox}>
                                        <Typography sx={style.tableDataText} >{item.reason}</Typography>
                                         <Button variant='contained' sx={style.reasonEditButton}>

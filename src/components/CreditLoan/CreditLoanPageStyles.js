@@ -12,27 +12,28 @@ export const styles=()=>({
         width:'18%',height:'220px',
         borderRadius:'16px',
         boxShadow:3,
-        padding:3
+        padding:2,
+        overflow:'hidden'
     },
     titleBox:{
         display:'flex',
-        justifyContent:'space-between',
+       // justifyContent:'space-between',
         border:'2px solid black',
-        width:'80%',
+        width:'106%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
         display:'flex',
-        justifyContent:'space-between',
+       // justifyContent:'space-between',
         border:'2px solid black',
-        width:'92%',
+        width:'111%',
         alignItems:'center'
     },
     text:{
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'18px',
+        fontSize:'15px',
         color:'#212B36'
     },
     todayText:{
@@ -79,14 +80,15 @@ export const styles=()=>({
     },
     descriptionBox:{
         display:'flex',
+        gap:'5px',
         border:'2px solid black',
-        justifyContent:'space-between', 
-        width:'85%',
+        //justifyContent:'space-between', 
+        width:'113%',
         alignItems:'center'
     },
     percentageText:{
         fontFamily: 'Public Sans',
-        fontSize: '18px',
+        fontSize: '15px',
         fontWeight: '600',
         lineHeight: '22px',
         letterSpacing: '0px',
@@ -158,7 +160,7 @@ export const styles=()=>({
         borderRadius: '6px',
         gap: '6px',
         background:'#FF563029',
-        marginLeft:'25%',
+        marginLeft:'20%',
     },
     creditGivenText:{
         fontFamily: 'Public Sans',
@@ -173,7 +175,7 @@ export const styles=()=>({
         borderRadius: '6px',
         gap: '6px',
         background:'#22C55E29',  
-        marginLeft:'25%',
+        marginLeft:'20%',
     },
     loanBorrowedText:{
         fontFamily: 'Public Sans',

@@ -1,4 +1,4 @@
-export const styles=()=>({
+ export const Laptopstyles=()=>({
     cardContainer:{
         width:'100%',
         border:'2px solid green', 
@@ -9,38 +9,36 @@ export const styles=()=>({
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'220px',
+        width:'18%',height:'200px',
         borderRadius:'16px',
         boxShadow:3,
-        padding:2,
-        overflow:'hidden'
+        padding:0
     },
     titleBox:{
         display:'flex',
-       // justifyContent:'space-between',
+        justifyContent:'space-around',
         border:'2px solid black',
-        width:'106%',
+        width:'100%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
         display:'flex',
-       // justifyContent:'space-between',
+        justifyContent:'space-between',
         border:'2px solid black',
-        width:'111%',
+        width:'100%',
         alignItems:'center'
     },
     text:{
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'15px',
-        color:'#212B36',
-        textWrap:'noWrap'
+        fontSize:'12px',
+        color:'#212B36'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '16px',
+         fontSize: '12px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',
@@ -49,13 +47,15 @@ export const styles=()=>({
     },
     rateBox:{
         display:'flex',
+        justifyContent:'start',
+        paddingLeft:'5px',
         border:'2px solid green',
         alignItems:'center'
     },
     rateText:{
         //styleName: Desktop/H4;
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         lineHeight: '36px',
         letterSpacing: '0px',
@@ -63,7 +63,7 @@ export const styles=()=>({
     },
     rateGreenTextGradient:{
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         textAlign: 'left',
         background: 'linear-gradient(135deg, #22C55E 0%, #118D57 100%)',
@@ -72,7 +72,7 @@ export const styles=()=>({
     },
     rateRedTextGradient:{
         fontFamily: 'Public Sans',
-        fontSize: '26px',
+        fontSize: '22px',
         fontWeight: '700',
         textAlign: 'left',
         background: 'linear-gradient(135deg, #FF5630 0%, #B71D18 100%)',
@@ -81,31 +81,28 @@ export const styles=()=>({
     },
     descriptionBox:{
         display:'flex',
-        gap:'5px',
         border:'2px solid black',
-        //justifyContent:'space-between', 
-        width:'113%',
+        justifyContent:'space-between', 
+        width:'100%',
         alignItems:'center'
     },
     percentageText:{
         fontFamily: 'Public Sans',
-        fontSize: '15px',
+        fontSize: '0.7rem',
         fontWeight: '600',
-        lineHeight: '22px',
-        letterSpacing: '0px',
         textAlign: 'left',
-        color:'#212B36'
+        color:'black'
     },
     lastWeekText:{
         fontFamily: 'Public Sans',
-        fontSize: '15px',
+        fontSize: '10px',
         fontWeight: '400',
         lineHeight: '22px',
         letterSpacing: '0px',
         textAlign: 'left',
         color:'#637381'
     },
-    withdrawText:{
+    allExpenseText:{
         //styleName: Desktop/H4;
         fontFamily: 'Public Sans',
         fontSize: '24px',
@@ -121,19 +118,68 @@ export const styles=()=>({
         lineHeight: '22px',
         letterSpacing: '0px',
         textAlign: 'center',
-    },
+        color:'#212B36',
+    }, 
     DateText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'12px',
         fontWeight:400,
         color:'#212B36',
     },
     TimeText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'11px',
         fontWeight:400,
-        marginLeft:'-50px',
+        marginLeft:'-60px',
         color:'#919EAB',
+    },
+    transactionAmountRedText:{
+        color:'#B71D18',
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: '400',
+        lineHeight: '22px',
+        letterSpacing: '0px',
+        textAlign: 'center',
+    },
+    transactionAmountGreenText:{
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: '400',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #22C55E 0%, #118D57 100%)',            
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+    },
+    creditGivenBox:{
+        width:'110px',
+        height:'24px',
+        padding: '2px 6px 2px 6px',
+        borderRadius: '6px',
+        gap: '6px',
+        background:'#FF563029',
+        marginLeft:'25%',
+    },
+    creditGivenText:{
+        fontFamily: 'Public Sans',
+        fontSize: '12px',
+        fontWeight: '700',
+        color:'#B71D18',
+    },
+    loanBorrowedBox:{
+        width:'110px',
+        height:'24px',
+        padding: '2px 6px 2px 6px',
+        borderRadius: '6px',
+        gap: '6px',
+        background:'#22C55E29',  
+        marginLeft:'25%',
+    },
+    loanBorrowedText:{
+        fontFamily: 'Public Sans',
+        fontSize: '12px',
+        fontWeight: '700',
+        color:'#118D57',
     },
     filterButton:{
         textTransform:'none',width:'94px',
@@ -157,7 +203,7 @@ export const styles=()=>({
         letterSpacing: '0px',
         textAlign: 'center',
     },
-    addWithdrawButton:{
+    addExpenseButton:{
     position:'relative',
     marginLeft:'10px',
     textTransform:'none',
@@ -172,7 +218,7 @@ export const styles=()=>({
     background:'grey'
     }
    },
-   addWithdrawButtonText:{
+   addExpenseButtonText:{
     //styleName: Components/Button/TextSmall;
     fontFamily: 'Public Sans',
     fontSize: '14px',
@@ -182,13 +228,13 @@ export const styles=()=>({
     textAlign: 'left',
     color:'#212B36'
    },
-   userEditButtonBox:{
+   reasonBox:{
     display:'flex',
     justifyContent:'space-between',
     border:'2px solid green',
     alignItems:'center'
    },
-   userEditButton:{
+   reasonEditButton:{
     width:'43px',
     height:'30px',
     borderRadius: '8px',
@@ -198,7 +244,7 @@ export const styles=()=>({
     background:'grey'
     }
    },
-   userEditButtonText:{
+   reasonEditButtonText:{
     fontFamily: 'Public Sans',
     fontSize: '14px',
     fontWeight: 600,
@@ -206,5 +252,4 @@ export const styles=()=>({
     textTransform:'none',
     color:'#212B36'
    }
-
-})
+ })

@@ -13,20 +13,21 @@ export const styles=()=>({
         height:'220px',
         borderRadius:'16px',
         boxShadow:3,
-        padding:3
+        padding:2,
+        overflow:'hidden'
     },
     titleBox:{
         display:'flex',
-        justifyContent:'space-between',
+       // justifyContent:'space-between',
         border:'2px solid black',
-        width:'80%',
+        width:'106%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
         display:'flex',
-        justifyContent:'space-between',
+        //justifyContent:'space-between',
         border:'2px solid black',
-        width:'92%',
+        width:'111%',
         alignItems:'center'
     },
     text:{
@@ -34,12 +35,13 @@ export const styles=()=>({
         fontWeight:600,
         lineHeight:'22px',
         fontSize:'14px',
-        color:'#212B36'
+        color:'#212B36',
+        textWrap:'noWrap'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '10px',
+         fontSize: '18px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',
@@ -80,14 +82,15 @@ export const styles=()=>({
     },
     descriptionBox:{
         display:'flex',
+        gap:'5px',
         border:'2px solid black',
-        justifyContent:'space-between', 
-        width:'85%',
+        //justifyContent:'space-between', 
+        width:'113%',
         alignItems:'center'
     },
     percentageText:{
         fontFamily: 'Public Sans',
-        fontSize: '18px',
+        fontSize: '15px',
         fontWeight: '600',
         lineHeight: '22px',
         letterSpacing: '0px',

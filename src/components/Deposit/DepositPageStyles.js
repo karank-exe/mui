@@ -1,46 +1,45 @@
 export const styles=()=>({
     cardContainer:{
-        width:'98%',
+        width:'100%',
         border:'2px solid green', 
         display:'flex',
         justifyContent:'space-between',
-        alignItems:'center'
     },
     card:{
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'12%',
-        height:'90%',
+        width:'18%',height:'220px',
         borderRadius:'16px',
         boxShadow:3,
-        padding:3
+        padding:2,
+        overflow:'hidden'
     },
     titleBox:{
         display:'flex',
-        justifyContent:'space-between',
+       // justifyContent:'space-between',
         border:'2px solid black',
-        width:'100%',
+        width:'106%',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
         display:'flex',
-        justifyContent:'space-between',
+       // justifyContent:'space-between',
         border:'2px solid black',
-        width:'92%',
+        width:'111%',
         alignItems:'center'
     },
     text:{
         fontFamily:'Public Sans',
         fontWeight:600,
         lineHeight:'22px',
-        fontSize:'14px',
+        fontSize:'15px',
         color:'#212B36'
     },
     todayText:{
          //styleName: Components/Nav/ItemBase/Active;
          fontFamily: 'Public Sans',
-         fontSize: '12px',
+         fontSize: '16px',
          fontWeight: '600',
          lineHeight: '22px',
          letterSpacing: '0px',
@@ -81,14 +80,15 @@ export const styles=()=>({
     },
     descriptionBox:{
         display:'flex',
+        gap:'5px',
         border:'2px solid black',
-        justifyContent:'space-between', 
-        width:'85%',
+        //justifyContent:'space-between', 
+        width:'113%',
         alignItems:'center'
     },
     percentageText:{
         fontFamily: 'Public Sans',
-        fontSize: '18px',
+        fontSize: '15px',
         fontWeight: '600',
         lineHeight: '22px',
         letterSpacing: '0px',
@@ -134,6 +134,7 @@ export const styles=()=>({
         fontSize:'14px',
         fontWeight:400,
         color:'#212B36',
+        textWrap:'noWrap'
     },
     TimeText:{
         fontFamily:'Public Sans',
