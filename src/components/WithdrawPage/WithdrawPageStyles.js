@@ -106,7 +106,7 @@ export const styles=()=>({
         color:'#637381'
     },
     withdrawText:{
-        //styleName: Desktop/H4;
+        //styleName: Desktop/H4; 
         fontFamily: 'Public Sans',
         fontSize: '24px',
         fontWeight: '700',

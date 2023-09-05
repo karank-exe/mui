@@ -230,7 +230,7 @@ const CreditLoan = () => {
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9',height:'20px',width:'20px'}}/>
                 </Box>
-            </Box>
+            </Box> 
             <Box sx={style.rateBox}>
                 <Typography sx={style.rateRedTextGradient}>₹ 28,971</Typography>
             </Box>

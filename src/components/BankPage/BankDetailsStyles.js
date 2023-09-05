@@ -30,12 +30,36 @@ color:'black',
 background:'#919EAB14'
 }
 },
+infoText:{
+    marginBottom:2,
+    fontFamily:'Public Sans',
+    fontSize:'14px',
+    fontWeight:'400',
+    color:'#637381'
+},
 gridboxtwo:{
     border:'2px solid green',
     borderRadius:4,
     boxShadow:3,
     p:2,
     height:'100%',
+},
+gridboxtwoRupeesText:{
+    fontFamily: 'Public Sans',
+    fontSize: '48px',
+    fontWeight: '800',
+    lineHeight: '64px',
+    letterSpacing: '0px',
+    textAlign: 'left'
+},
+gridboxtwoCurrentBalanceText:{
+    fontFamily: 'Public Sans',
+    fontSize: '16px',
+    fontWeight: '600',
+    lineHeight: '24px',
+    letterSpacing: '0px',
+    textAlign: 'left',
+    color:'#637381'
 },
 tableHeadText:{
     //styleName: Desktop/Subtitle2;
@@ -77,7 +101,7 @@ background:'grey'
 filterButtonText:{
 color:'black',  //styleName: Desktop/Body2;
 fontFamily: 'Public Sans',
-fontSize: '14px',
+fontSize: '14px', 
 fontWeight: '600',
 letterSpacing: '0px',
 textAlign: 'center',
@@ -87,7 +111,17 @@ fontFamily: 'Public Sans',
 fontSize: '14px',
 fontWeight: 400,
 letterSpacing: '0px',
+textAlign: 'center',
+textWrap:'noWrap',
+color:'black',
+},
+tableUserDataText:{
+fontFamily: 'Public Sans',
+fontSize: '14px',
+fontWeight: 400,
+letterSpacing: '0px',
 textAlign: 'left',
+textWrap:'noWrap',
 color:'black',
 },
 DateText:{

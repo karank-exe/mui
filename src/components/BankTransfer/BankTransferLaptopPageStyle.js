@@ -9,7 +9,8 @@ export const Laptopstyles=()=>({
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'200px',
+        width:'18%',
+        height:'150px',
         borderRadius:'16px',
         boxShadow:3,
         padding:0
@@ -19,6 +20,7 @@ export const Laptopstyles=()=>({
         justifyContent:'space-around',
         border:'2px solid black',
         width:'100%',
+        marginLeft:'2px',
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
@@ -26,6 +28,7 @@ export const Laptopstyles=()=>({
         justifyContent:'space-between',
         border:'2px solid black',
         width:'100%',
+        marginLeft:'2px',
         alignItems:'center'
     },
     text:{
@@ -107,7 +110,7 @@ export const Laptopstyles=()=>({
         fontFamily: 'Public Sans',
         fontSize: '24px',
         fontWeight: '700',
-        lineHeight: '36px',
+        lineHeight: '36px', 
         letterSpacing: '0px',
         textAlign: 'left',
     },
@@ -122,14 +125,14 @@ export const Laptopstyles=()=>({
     },
     DateText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'12px',
         fontWeight:400,
         color:'#212B36',
         textWrap:'noWrap'
     },
     TimeText:{
         fontFamily:'Public Sans',
-        fontSize:'14px',
+        fontSize:'11px',
         fontWeight:400,
         marginLeft:'-50px',
         color:'#919EAB',

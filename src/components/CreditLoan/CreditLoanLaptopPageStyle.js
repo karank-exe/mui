@@ -9,7 +9,8 @@ export const Laptopstyles=()=>({
         display:'flex',
         flexDirection:'column',
         justifyContent:'space-around',
-        width:'18%',height:'200px',
+        width:'18%',
+        height:'150px',
         borderRadius:'16px',
         boxShadow:3,
         padding:0
@@ -19,13 +20,15 @@ export const Laptopstyles=()=>({
         justifyContent:'space-around',
         border:'2px solid black',
         width:'100%',
-        alignItems:'center'
+        marginLeft:'2px',
+        alignItems:'center' 
     },
     loanOrCreditTitleBox:{
         display:'flex',
         justifyContent:'space-between',
         border:'2px solid black',
         width:'100%',
+        marginLeft:'2px',
         alignItems:'center'
     },
     text:{

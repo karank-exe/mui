@@ -350,7 +350,7 @@ const BankTransfer = () => {
                                         <Button variant='contained' sx={style.reasonEditButton}>
                                             <Typography sx={style.reasonEditButtonText}>Edit</Typography>
                                         </Button>
-                                        </Box>
+                                        </Box> 
                                     </TableCell>
                                 </TableRow>)
                             )

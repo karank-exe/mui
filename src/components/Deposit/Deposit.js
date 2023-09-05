@@ -247,7 +247,7 @@ const Deposit = () => {
                 <Typography sx={style.text}>Expenses</Typography>
                 <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
-                <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
+                <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/> 
                 </Box>
             </Box>
             <Box sx={style.rateBox}>

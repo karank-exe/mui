@@ -1,4 +1,4 @@
-export const styles=()=>({
+export const Laptopstyles=()=>({
     ledger:{
         fontFamily: 'Inter',
     fontSize: '24px',
@@ -72,7 +72,7 @@ export const styles=()=>({
     },
     tableDataText:{
         fontFamily: 'Public Sans',
-        fontSize: '14px',
+        fontSize: '13px',
         fontWeight: 400,
         lineHeight: '22px',
         letterSpacing: '0px',
@@ -80,14 +80,14 @@ export const styles=()=>({
         color:'#212B36',
     },
     withdrawstyle:{
-    width:'78px',
+    width:'73px',
     height:'24px',
     padding: '2px 6px 2px 6px',
     borderRadius: '6px',
     gap: '6px',
     background: '#00B8D929',
     fontFamily: 'Public Sans',
-    fontSize: '12px',
+    fontSize: '11px',
     fontWeight: '700',
      lineHeight: '20px',
     letterSpacing: '0px',
@@ -102,7 +102,7 @@ export const styles=()=>({
         gap: '6px',
         background: '#8E33FF29',
         fontFamily: 'Public Sans',
-        fontSize: '12px',
+        fontSize: '11px',
         fontWeight: '700',
          lineHeight: '20px',
         letterSpacing: '0px',
@@ -128,6 +128,9 @@ export const styles=()=>({
     lineHeight: '22px',
     letterSpacing: '0px',
     textAlign: 'left',
-    textTransform:'none'
+    textTransform:'none',
+    '&.MuiButtonBase-root':{
+        minWidth:'45px'
+    },
     }
     })

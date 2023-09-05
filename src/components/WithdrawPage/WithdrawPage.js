@@ -350,7 +350,7 @@ const WithdrawPage = () => {
                                         </Box>
                                     </TableCell>
                                 </TableRow>)
-                            )
+                            ) 
                         }
                     </TableBody>
                 </TblContainer>

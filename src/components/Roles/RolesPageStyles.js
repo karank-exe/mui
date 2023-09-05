@@ -127,7 +127,7 @@ export const styles=()=>({
         border: '1px',
         gap: '8px',
         marginLeft:'10px',
-        background:'white',
+        background:'white', 
         '&:hover':{
         background:'grey'
         }

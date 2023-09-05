@@ -1,8 +1,9 @@
 import React from 'react'
-import useTable from '../control/UseTable';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Toolbar from '@mui/material/Toolbar'
 import BankDetails from './BankDetails';
 import { styles } from './BanksPageStyles';
+import { Laptopstyles } from './BankPageLaptopStyles';
 import { Paper,TableBody,TableRow,TableCell,InputAdornment } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -11,6 +12,7 @@ import Search from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import CustomSwitch from './SwitchCustom/Switch'
+import useTable from '../control/BankPageTable';
 const style = styles();
 const headCells = [
     { id: 'accountholdername', label: 'Account Holder Name' },
@@ -46,6 +48,8 @@ createData('Rakesh Tamboli','IDFC','Savings',25000,false,'Withdrawal'),
 createData('Shivam Sharma','Paytm','Savings',25000,true,'Withdrawal'),
 ]
 const BanksPage = () => {
+    const isLaptopScreen = useMediaQuery('(max-width: 1250px)')
+    const style = isLaptopScreen? Laptopstyles(): styles()
     const [records, setRecords] = React.useState(recordsdata)
     const [filterFn, setFilterFn] = React.useState({ fn: items => { return items; } })
     const [selectedUser, setSelectedUser]=React.useState(null)
@@ -106,12 +110,14 @@ const handleViewClick=(user)=>{
                                               {
                                                   recordsAfterPagingAndSorting().map((item,index) =>
                                                       (<TableRow key={index}>
-                                                          <TableCell sx={{minWidth:50}}>{item.accountholdername}</TableCell>
-                                                          <TableCell sx={{minWidth:50}}>{item.bankname}</TableCell>
-                                                          <TableCell sx={{minWidth:50}}>{item.accounttype}</TableCell>
-                                                          <TableCell sx={{minWidth:50}}>{item.currentbalance}</TableCell>
-                                                          <TableCell sx={{minWidth:50, textAlign:'center', border:'2px solid red',p:0,background:'white'}}><CustomSwitch checked={item.status} /></TableCell>
-                                                          <TableCell sx={{minWidth:100,width:700}}>
+                                                          <TableCell sx={{minWidth:50,'&.MuiTableCell-root':{padding:0}}}><Typography sx={style.tableDataText}>{item.accountholdername}</Typography></TableCell>
+                                                          <TableCell sx={{minWidth:50,'&.MuiTableCell-root':{padding:0}}}><Typography sx={style.tableDataText}>{item.bankname}</Typography></TableCell>
+                                                          <TableCell sx={{minWidth:50,'&.MuiTableCell-root':{padding:0}}}><Typography sx={style.tableDataText}>{item.accounttype}</Typography></TableCell>
+                                                          <TableCell sx={{minWidth:50,'&.MuiTableCell-root':{padding:0}}}><Typography sx={style.tableDataText}>{item.currentbalance}</Typography></TableCell>
+                                                          <TableCell sx={{minWidth:50, textAlign:'center', border:'2px solid red',p:0,background:'white','&.MuiTableCell-root':{padding:0}}}>
+                                                            <CustomSwitch checked={item.status} />
+                                                          </TableCell>
+                                                          <TableCell sx={{minWidth:100,width:900,'&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}>
                                                             <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid black', alignItems:'center'}}>
                                                               <Box sx={item.usedfor==='Withdrawal'? style.withdrawstyle:style.depositstyle}>
                                                               {item.usedfor}

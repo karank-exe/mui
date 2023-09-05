@@ -188,7 +188,7 @@ const Expense = () => {
             <Box sx={style.rateBox}>
                 <Typography sx={style.rateText}>₹ 35,000</Typography>
             </Box>
-            <Box sx={style.descriptionBox}>
+            <Box sx={style.descriptionBox}> 
                 <img src={upCircle}/>
                 <Typography sx={style.percentageText}>+39.4%</Typography>
                 <Typography sx={style.lastWeekText}>than last week</Typography>

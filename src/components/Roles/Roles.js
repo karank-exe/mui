@@ -233,15 +233,15 @@ const Roles = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{minWidth:100,textAlign:'center'}}><Typography sx={style.tableDataText} >{item.username}</Typography></TableCell>
-                                    <TableCell sx={{minWidth:100, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:100,textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 7px'}}}><Typography sx={style.tableDataText} >{item.username}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:100, textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 7px'}}}>
                                     <Typography sx={style.tableDataText} >{showPasswords[index]?item.password:'*****'}
                                     <img src={eye} style={{marginLeft:'8px',cursor:'pointer'}} onClick={()=>handleTogglePassword(index)}/>
                                     </Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:100, textAlign:'center'}}><Typography sx={style.tableDataText} >{item.roles}</Typography></TableCell>
-                                    <TableCell sx={{minWidth:100, textAlign:'center'}}><CustomSwitch checked={item.userlock}/></TableCell>
-                                    <TableCell sx={{minWidth:100, textAlign:'center'}}>
+                                    <TableCell sx={{minWidth:100, textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 7px'}}}><Typography sx={style.tableDataText} >{item.roles}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:100, textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 7px'}}}><CustomSwitch checked={item.userlock}/></TableCell>
+                                    <TableCell sx={{minWidth:100, textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 7px'}}}>
                                         <Box sx={style.userEditButtonBox}>
                                        <Typography sx={style.tableDataText} >{item.franchiseaccess}</Typography>
                                        <Box sx={{border:'2px solid black'}}>
@@ -284,4 +284,4 @@ const Roles = () => {
   )
 }
 
-export default Roles
+export default Roles 

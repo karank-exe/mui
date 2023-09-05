@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
+// import { Table, TableHead, TableRow, TableCell, makeStyles, TablePagination, TableSortLabel } from '@material-ui/core'
 import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } from '@mui/material';
-// import './tableStyles.css'
-// import { makeStyles } from '@mui/styles';
-
-// const useStyles = makeStyles((theme) => ({
-//   sortLabel: {
-//     marginRight: theme.spacing(-1), // Adjust the marginRight to bring the arrow closer
-//   },
-// }));
 // import { makeStyles } from '@mui/styles';
 // const useStyles = makeStyles(theme => ({
 //     table: {
@@ -31,6 +24,7 @@ import { Table,TableHead,TableRow,TableCell,TablePagination,TableSortLabel } fro
 export default function useTable(records, headCells,filterFn) {
 
     // const classes = useStyles();
+
     const pages = [5, 10, 25]
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(pages[page])
@@ -56,39 +50,38 @@ export default function useTable(records, headCells,filterFn) {
             <TableRow sx={{backgroundColor:'#F4F6F8'}}>
                 {
                     headCells.map(headCell => (
-                        headCell.label==='Panel'?
+                        headCell.label==='User'?
                         ( <TableCell key={headCell.id}
-                            sx={{textAlign:'left', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 1px 7px 10px'}}}
+                            sx={{textAlign:'left', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}
                                 sortDirection={orderBy === headCell.id ? order : false}>
                                 {headCell.disableSorting ? headCell.label :
                                     <TableSortLabel
                                         active={orderBy === headCell.id}
-                                        classes={{ icon: 'customTableSortLabel' }}
                                         direction={orderBy === headCell.id ? order : 'asc'}
                                         onClick={() => { handleSortRequest(headCell.id) }}>
-                                        <Typography sx={{
-                                            fontFamily: 'Public Sans',
-                                            fontSize: '14px',
-                                            fontWeight: '600',
-                                            lineHeight: '24px',
-                                            letterSpacing: '0px',                   
-                                            textAlign: 'left',
-                                            color:'#637381',
-                                            '&.MuiTypography-root':{textWrap:'noWrap'}
-                                        }}>
+                                        <Typography sx={{//styleName: Components/TableTh;
+                                                fontFamily: 'Public Sans',
+                                                fontSize: '14px',
+                                                fontWeight: '600',
+                                                lineHeight: '24px',
+                                                letterSpacing: '0px',
+                                                textAlign: 'left',
+                                                color:'#637381',
+                                                '&.MuiTypography-root':{textWrap:'noWrap'}
+                                             }}>
                                         {headCell.label}
                                         </Typography>
                                     </TableSortLabel>
                                 }
                             </TableCell>):(<TableCell key={headCell.id}
-                            sx={{textAlign:'center', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 1px 7px 10px'}}}
+                            sx={{textAlign:'center', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}
                                 sortDirection={orderBy === headCell.id ? order : false}>
                                 {headCell.disableSorting ? headCell.label :
                                     <TableSortLabel
                                         active={orderBy === headCell.id}
                                         direction={orderBy === headCell.id ? order : 'asc'}
                                         onClick={() => { handleSortRequest(headCell.id) }}>
-                                        <Typography sx={{
+                                        <Typography sx={{//styleName: Components/TableTh;
                                                 fontFamily: 'Public Sans',
                                                 fontSize: '14px',
                                                 fontWeight: '600',

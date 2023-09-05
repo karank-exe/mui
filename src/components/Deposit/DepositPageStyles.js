@@ -106,7 +106,7 @@ export const styles=()=>({
     },
     depositText:{
         //styleName: Desktop/H4;
-        fontFamily: 'Public Sans',
+        fontFamily: 'Public Sans', 
         fontSize: '24px',
         fontWeight: '700',
         lineHeight: '36px',

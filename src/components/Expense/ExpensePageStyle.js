@@ -95,7 +95,7 @@ export const styles=()=>({
         lineHeight: '22px',
         letterSpacing: '0px',
         textAlign: 'left',
-        color:'#212B36'
+        color:'#212B36' 
     },
     lastWeekText:{
         fontFamily: 'Public Sans',

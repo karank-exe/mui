@@ -30,7 +30,7 @@ export const styles=()=>({
         alignItems:'center'
     },
     text:{
-        fontFamily:'Public Sans',
+        fontFamily:'Public Sans', 
         fontWeight:600,
         lineHeight:'22px',
         fontSize:'15px',

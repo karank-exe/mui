@@ -24,7 +24,7 @@ export const Laptopstyles=()=>({
         alignItems:'center'
     },
     loanOrCreditTitleBox:{
-        display:'flex', 
+        display:'flex',
         justifyContent:'space-between',
         border:'2px solid black',
         width:'100%',
@@ -105,7 +105,7 @@ export const Laptopstyles=()=>({
         textAlign: 'left',
         color:'#637381'
     },
-    depositText:{
+    bankTransferText:{
         //styleName: Desktop/H4;
         fontFamily: 'Public Sans',
         fontSize: '24px',
@@ -118,31 +118,81 @@ export const Laptopstyles=()=>({
         fontFamily: 'Public Sans',
         fontSize: '14px',
         fontWeight: 400,
-        lineHeight: '22px',
+        // lineHeight: '22px',
         letterSpacing: '0px',
         textAlign: 'center',
-    },
-    tableDataText:{
-        fontFamily: 'Public Sans',
-        fontSize: '14px',
-        fontWeight: 400,
-        lineHeight: '22px',
-        letterSpacing: '0px',
-        textAlign: 'center',
+        color:'#212B36',
     },
     DateText:{
         fontFamily:'Public Sans',
-        fontSize:'11px',
+        fontSize:'12px',
         fontWeight:400,
         color:'#212B36',
-        textWrap:'noWrap'
     },
     TimeText:{
         fontFamily:'Public Sans',
         fontSize:'11px',
         fontWeight:400,
-        marginLeft:'-50px',
+        marginLeft:'-60px',
+        textAlign:'center',
         color:'#919EAB',
+    },
+    tablePanelText:{ 
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: 400,
+        lineHeight: '22px',
+        letterSpacing: '0px',
+        textAlign: 'left',
+        color:'#212B36',
+    },
+    transactionAmountRedText:{
+        color:'#B71D18',
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: '400',
+        lineHeight: '22px',
+        letterSpacing: '0px',
+        textAlign: 'center',
+    },
+    transactionAmountGreenText:{
+        fontFamily: 'Public Sans',
+        fontSize: '14px',
+        fontWeight: '400',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #22C55E 0%, #118D57 100%)',            
+        WebkitBackgroundClip: 'text',
+        color: 'transparent',
+    },
+    creditGivenBox:{
+        width:'110px',
+        height:'24px',
+        padding: '2px 6px 2px 6px',
+        borderRadius: '6px',
+        gap: '6px',
+        background:'#FF563029',
+        marginLeft:'25%',
+    },
+    creditGivenText:{
+        fontFamily: 'Public Sans',
+        fontSize: '12px',
+        fontWeight: '700',
+        color:'#B71D18',
+    },
+    loanBorrowedBox:{
+        width:'110px',
+        height:'24px',
+        padding: '2px 6px 2px 6px',
+        borderRadius: '6px',
+        gap: '6px',
+        background:'#22C55E29',  
+        marginLeft:'25%',
+    },
+    loanBorrowedText:{
+        fontFamily: 'Public Sans',
+        fontSize: '12px',
+        fontWeight: '700',
+        color:'#118D57',
     },
     filterButton:{
         textTransform:'none',width:'94px',
@@ -166,11 +216,11 @@ export const Laptopstyles=()=>({
         letterSpacing: '0px',
         textAlign: 'center',
     },
-    addDepositButton:{
+    addBankTransferButton:{
     position:'relative',
     marginLeft:'10px',
     textTransform:'none',
-    width:'170px',
+    width:'190px',
     height:'40px',
     // padding: '4px 4px 4px 4px',
     borderRadius: '8px',
@@ -181,7 +231,7 @@ export const Laptopstyles=()=>({
     background:'grey'
     }
    },
-   addDepositButtonText:{
+   addBankTransferButtonText:{
     //styleName: Components/Button/TextSmall;
     fontFamily: 'Public Sans',
     fontSize: '14px',
@@ -191,13 +241,13 @@ export const Laptopstyles=()=>({
     textAlign: 'left',
     color:'#212B36'
    },
-   userEditButtonBox:{
+   reasonBox:{
     display:'flex',
     justifyContent:'space-between',
     border:'2px solid green',
     alignItems:'center'
    },
-   userEditButton:{
+   reasonEditButton:{
     width:'43px',
     height:'30px',
     borderRadius: '8px',
@@ -207,12 +257,12 @@ export const Laptopstyles=()=>({
     background:'grey'
     }
    },
-   userEditButtonText:{
+   reasonEditButtonText:{
     fontFamily: 'Public Sans',
     fontSize: '14px',
     fontWeight: 600,
     lineHeight:'22px',
     textTransform:'none',
     color:'#212B36'
-   } 
+   }
 })

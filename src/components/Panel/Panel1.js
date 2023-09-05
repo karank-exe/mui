@@ -129,6 +129,9 @@ const Panel1 = () => {
   const[records,setRecords]=useState(recordsData)
   const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
   const [option, setOption]= useState('Withdraw')
+  const [startDate,setStartDate]=useState(null)
+  const [endDate,setEndDate]=useState(null)
+  console.log("start date and end date",startDate, endDate)
   const handleOption=(optionName)=>{
     setOption(optionName)
   }
@@ -150,6 +153,12 @@ const handleSearch = e => {
               return items.filter(x => x.transactionAmount.includes(target.value))
       }
   })
+}
+const handleStartDate=(date)=>{
+setStartDate(date)
+}
+const handleEndDate=(date)=>{
+  setEndDate(date)
 }
   return (
    <div>
@@ -213,7 +222,9 @@ const handleSearch = e => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <DatePicker label="Start Date"   
+           value={startDate}
            sx={{width:'260px'}}
+           onChange={handleStartDate}
           />
         </DemoContainer>
       </LocalizationProvider>
@@ -222,7 +233,9 @@ const handleSearch = e => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <DatePicker label="End Date"   
+          value={endDate}
            sx={{width:'260px'}}
+           onChange={handleEndDate}
           />
         </DemoContainer>
       </LocalizationProvider>

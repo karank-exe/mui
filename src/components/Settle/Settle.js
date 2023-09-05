@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import Box from '@mui/material/Box'
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
@@ -14,6 +15,7 @@ import upCircle from '../image/upcircle.png'
 import downCircle from '../image/downCircle.png'
 import filterIcon from '../image/filterButtonIcon.png'
 import { styles } from './SettlePageStyles';
+import { Laptopstyles } from './SettleLaptopPageStyles';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/SettleTable'
 import FilterDrawer from '../FilterDrawer/FilterDrawer'
@@ -113,6 +115,8 @@ const recordsData=[
 console.log("recordData",recordsData)
 
 const Settle = () => {
+    const isLaptopScreen = useMediaQuery('(max-width: 1250px)')
+    const style = isLaptopScreen? Laptopstyles(): styles()
     const[records,setRecords]=useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [filterOpen, setFilterOpen]= useState(false)
@@ -167,7 +171,7 @@ const Settle = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Withdrawal</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -185,7 +189,7 @@ const Settle = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Deposits</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -203,7 +207,7 @@ const Settle = () => {
         <Box sx={style.card}>
             <Box sx={style.loanOrCreditTitleBox}>
                 <Typography sx={style.text}>Loans Borrowed</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'9px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -221,7 +225,7 @@ const Settle = () => {
         <Box sx={style.card}>
             <Box sx={style.loanOrCreditTitleBox}>
                 <Typography sx={style.text}>Credits Given</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -239,7 +243,7 @@ const Settle = () => {
         <Box sx={style.card}>
             <Box sx={style.titleBox}>
                 <Typography sx={style.text}>Expenses</Typography>
-                <Box sx={{display:'flex',alignItems:'center'}}>
+                <Box sx={{display:'flex',alignItems:'center',marginLeft:'20px'}}>
                 <Typography sx={style.todayText}>Today</Typography>
                 <KeyboardArrowDownIcon style={{color:'#00B8D9'}}/>
                 </Box>
@@ -320,24 +324,24 @@ const Settle = () => {
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                             (<TableRow key={index}>
-                                    <TableCell sx={{minWidth:100,textAlign:'center',width:200}}>
+                                    <TableCell sx={{minWidth:100,textAlign:'center',width:200,'&.MuiTableCell-root':{padding:'10px 0px 10px 0px'}}}>
                                     <Typography sx={style.tableDataText}>{item.pointsSettled}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:100, textAlign:'center',width:200}}>
+                                    <TableCell sx={{minWidth:100, textAlign:'center',width:200,'&.MuiTableCell-root':{padding:'10px 0px 10px 0px'}}}>
                                     <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
                                     <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{minWidth:300, textAlign:'left'}}><Typography sx={style.tablePanelText} >{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{minWidth:300, textAlign:'left','&.MuiTableCell-root':{padding:'10px 0px 10px 0px'}}}><Typography sx={style.tablePanelText} >{item.panel}</Typography></TableCell>
                                 </TableRow>)
                             )
                         }
                     </TableBody>
                 </TblContainer>
                 <TblPagination
-                />
+                /> 
         </Box>
     </Paper>
-    <FilterDrawer filterOpen={filterOpen} handleFilter={handleFilter}/>
+    <FilterDrawer filterOpen={filterOpen} handleFilter={handleFilter}/> 
     </>
   )
 }

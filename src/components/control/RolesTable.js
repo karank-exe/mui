@@ -33,7 +33,7 @@ export default function useTable(records, headCells,filterFn) {
                     headCells.map(headCell => (
                         headCell.label==='Franchise Access'?
                         ( <TableCell key={headCell.id}
-                            sx={{textAlign:'left', border:'2px solid red'}}
+                            sx={{textAlign:'left', border:'2px solid red','&.MuiTableCell-root':{padding:'5px 0px 5px 9px'}}}
                                 sortDirection={orderBy === headCell.id ? order : false}>
                                 {headCell.disableSorting ? headCell.label :
                                     <TableSortLabel
@@ -48,13 +48,14 @@ export default function useTable(records, headCells,filterFn) {
                                                 letterSpacing: '0px',
                                                 textAlign: 'left',
                                                 color:'#637381',
+                                                '&.MuiTypography-root':{textWrap:'noWrap'}
                                              }}>
                                         {headCell.label}
                                         </Typography>
                                     </TableSortLabel>
                                 }
                             </TableCell>):(<TableCell key={headCell.id}
-                            sx={{textAlign:'center', border:'2px solid red'}}
+                            sx={{textAlign:'center', border:'2px solid red','&.MuiTableCell-root':{padding:'5px 0px 5px 9px'}}}
                                 sortDirection={orderBy === headCell.id ? order : false}>
                                 {headCell.disableSorting ? headCell.label :
                                     <TableSortLabel
@@ -69,6 +70,7 @@ export default function useTable(records, headCells,filterFn) {
                                                 letterSpacing: '0px',
                                                 textAlign: 'left',
                                                 color:'#637381',
+                                                '&.MuiTypography-root':{textWrap:'noWrap'}
                                              }}>
                                         {headCell.label}
                                         </Typography>

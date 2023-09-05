@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -14,12 +15,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack'
 import Switchcustom from '../Switch/Switch'
-import useTable from '../control/UseTable'
+import useTable from '../control/BankDetailsTable'
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import stack from '../image/stack.png'
 import filterIcon from '../image/filterButtonIcon.png'
 import {styles} from './BankDetailsStyles'
+import { Laptopstyles } from './BankDetailsLaptopStyles';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 const style = styles()
@@ -181,6 +183,9 @@ createData('10000',mergedTime(),6214, 'panel 4', 'harsh567'),
 ]
 
 const BankDetails = ({selectedUser}) => {
+    const isLaptopScreen = useMediaQuery('(max-width: 1250px)')
+    const style = isLaptopScreen? Laptopstyles(): styles()
+    console.log("bankdetail",style)
     const [records, setRecords] = useState(recordsData)
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
     const [option, setOption]= useState('Withdraw')
@@ -232,37 +237,37 @@ const handleFilter =()=>{
             <Box sx={{display:'flex', justifyContent:'space-between',mt:'10px'}}>
                <Box sx={{width:'50%',display:'flex',justifyContent:'space-between'}}>
                     <Box sx={{display:'flex', flexDirection:'column',width:'40%',}}>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Acc Holder Name:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>IFSC Code:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Account Type:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Aadhar Card:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Atm Front:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Cheque:</Typography>
+                        <Typography sx={style.infoText}>Acc Holder Name:</Typography>
+                        <Typography sx={style.infoText}>IFSC Code:</Typography>
+                        <Typography sx={style.infoText}>Account Type:</Typography>
+                        <Typography sx={style.infoText}>Aadhar Card:</Typography>
+                        <Typography sx={style.infoText}>Atm Front:</Typography>
+                        <Typography sx={style.infoText}>Cheque:</Typography>
                     </Box>
                     <Box sx={{display:'flex', flexDirection:'column',width:'40%'}}>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>{selectedUser.accountholdername}</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>HDFC0000550</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>{selectedUser.accounttype}</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>aadharcard.jpg</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>atmfront.jpg</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>cheque.jpg</Typography>
+                        <Typography sx={style.infoText}>{selectedUser.accountholdername}</Typography>
+                        <Typography sx={style.infoText}>HDFC0000550</Typography>
+                        <Typography sx={style.infoText}>{selectedUser.accounttype}</Typography>
+                        <Typography sx={style.infoText}>aadharcard.jpg</Typography>
+                        <Typography sx={style.infoText}>atmfront.jpg</Typography>
+                        <Typography sx={style.infoText}>cheque.jpg</Typography>
                     </Box>
                 </Box>
          
                 <Box sx={{width:'40%',display:'flex',justifyContent:'space-between'}}>
                 <Box sx={{display:'flex', flexDirection:'column',width:'40%'}}>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Contact No.:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Bank Name:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Account No.:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Pan Card:</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>Atm Back:</Typography>
+                        <Typography sx={style.infoText}>Contact No.:</Typography>
+                        <Typography sx={style.infoText}>Bank Name:</Typography>
+                        <Typography sx={style.infoText}>Account No.:</Typography>
+                        <Typography sx={style.infoText}>Pan Card:</Typography>
+                        <Typography sx={style.infoText}>Atm Back:</Typography>
                     </Box>
                     <Box sx={{display:'flex', flexDirection:'column',width:'40%'}}>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>9888888888</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>{selectedUser.bankname}</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>7456987455</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>pancard.jpg</Typography>
-                        <Typography sx={{marginBottom:2,fontFamily:'Public Sans',fontWeight:'400',color:'#637381'}}>atmback.jpg</Typography>
+                        <Typography sx={style.infoText}>9888888888</Typography>
+                        <Typography sx={style.infoText}>{selectedUser.bankname}</Typography>
+                        <Typography sx={style.infoText}>7456987455</Typography>
+                        <Typography sx={style.infoText}>pancard.jpg</Typography>
+                        <Typography sx={style.infoText}>atmback.jpg</Typography>
                     </Box>
 
                 </Box>
@@ -274,10 +279,8 @@ const handleFilter =()=>{
                 <Button variant='contained' sx={style.withdrawalButton}>Withdrawal</Button>
                 <Box sx={{display:'flex',justifyContent:'space-between', border:'2px solid red', transform:'translateY(50%)'}}>
                     <Box>
-                        <Typography sx={{fontFamily: 'Public Sans',fontSize: '48px',fontWeight: '800',lineHeight: '64px',letterSpacing: '0px',textAlign: 'left',
-                      }}>Rs 60,000</Typography>
-                        <Typography sx={{fontFamily: 'Public Sans',fontSize: '16px',fontWeight: '600',lineHeight: '24px',letterSpacing: '0px',textAlign: 'left',color:'#637381'
-                      }}>Current Balance</Typography>
+                        <Typography sx={style.gridboxtwoRupeesText}>Rs 60,000</Typography>
+                        <Typography sx={style.gridboxtwoCurrentBalanceText}>Current Balance</Typography>
                     </Box>
                     <img src={stack}/>
                 </Box>
@@ -345,14 +348,14 @@ const handleFilter =()=>{
                         {
                             recordsAfterPagingAndSorting().map((item,index) =>
                                 (<TableRow key={index}>
-                                    <TableCell sx={{width:50,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.transactionAmount}</Typography></TableCell>
-                                    <TableCell sx={{width:100,}}>
+                                    <TableCell sx={{width:50,textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}><Typography sx={style.tableDataText}>{item.transactionAmount}</Typography></TableCell>
+                                    <TableCell sx={{width:100,'&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}>
                                     <Typography sx={style.DateText} >{item.date.split('-')[0]}</Typography>
                                     <Typography sx={style.TimeText} >{item.date.split('-')[1]}</Typography>
                                     </TableCell>
-                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.utrNumber}</Typography></TableCell>
-                                    <TableCell sx={{width:100,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.panel}</Typography></TableCell>
-                                    <TableCell sx={{width:500,textAlign:'center'}}><Typography sx={style.tableDataText}>{item.User}</Typography></TableCell>
+                                    <TableCell sx={{width:100,textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}><Typography sx={style.tableDataText}>{item.utrNumber}</Typography></TableCell>
+                                    <TableCell sx={{width:100,textAlign:'center','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}><Typography sx={style.tableDataText}>{item.panel}</Typography></TableCell>
+                                    <TableCell sx={{width:500,textAlign:'left','&.MuiTableCell-root':{padding:'10px 0px 10px 5px'}}}><Typography sx={style.tableUserDataText}>{item.User}</Typography></TableCell>
                                 </TableRow>)
                             )
                         }
@@ -382,4 +385,4 @@ const handleFilter =()=>{
   )
 }
 
-export default BankDetails
+export default BankDetails 

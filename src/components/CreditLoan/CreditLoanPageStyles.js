@@ -107,7 +107,7 @@ export const styles=()=>({
     creditLoanText:{
         //styleName: Desktop/H4;
         fontFamily: 'Public Sans',
-        fontSize: '24px',
+        fontSize: '24px', 
         fontWeight: '700',
         lineHeight: '36px',
         letterSpacing: '0px',
