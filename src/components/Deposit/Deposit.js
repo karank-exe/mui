@@ -19,7 +19,7 @@ import { styles } from './DepositPageStyles';
 import { Laptopstyles } from './DepositLaptopPageStyle'
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/DepositTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from './FilterDrawer/FilterDrawer'
 import AddDeposit from '../AddDeposit/AddDeposit'
 const style = styles();
 

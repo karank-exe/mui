@@ -99,7 +99,7 @@ background:'grey'
 }
 },
 filterButtonText:{
-color:'black',  //styleName: Desktop/Body2;
+color:'#919EAB',  //styleName: Desktop/Body2;
 fontFamily: 'Public Sans',
 fontSize: '14px', 
 fontWeight: '600',

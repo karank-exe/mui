@@ -18,7 +18,7 @@ import { styles } from './SettlePageStyles';
 import { Laptopstyles } from './SettleLaptopPageStyles';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/SettleTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from './FilterDrawer/FilterDrawer'
 const style = styles();
 
 //----------------custom Theme for search field-------------------//

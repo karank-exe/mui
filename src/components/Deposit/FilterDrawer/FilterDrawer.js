@@ -15,8 +15,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
-import filterDelete from '../image/filterDelete.png'
-import { styles } from '../WithdrawPage/WithdrawPageStyles';
+import filterDelete from './image/filterDelete.png'
+import DatePickerIcon from './DatePickerIcon'
+// import { styles } from '../WithdrawPage/WithdrawPageStyles';
 const customTheme1=()=>
 createTheme({
     // palette: {
@@ -53,7 +54,7 @@ createTheme({
       },
 });
 
-const style = styles();
+// const style = styles();
 
 //-------------marks for slider--------------------------------//
 const marks = [
@@ -206,12 +207,23 @@ const handleSliderChange = (event, newValue) => {
             textAlign: 'left',
             marginLeft:'10px',
             color:'#212B36'
-        }}>Withdraw Date Range</Typography>
+        }}>Deposit Date Range</Typography>
         <Box sx={{paddingLeft:'10px'}}>
         <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="Start Date"  sx={{ width: "260px" }} />
+          <DatePicker label="Start Date" 
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>
@@ -220,7 +232,18 @@ const handleSliderChange = (event, newValue) => {
       <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="End Date"  sx={{ width: "260px" }} />
+          <DatePicker label="End Date"  
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>

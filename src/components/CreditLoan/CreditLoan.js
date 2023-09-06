@@ -19,11 +19,11 @@ import { styles } from './CreditLoanPageStyles';
 import { Laptopstyles } from './CreditLoanLaptopPageStyle';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/CreditLoanTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from './FilterDrawer/FilterDrawer'
 // import AddDeposit from '../AddDeposit/AddDeposit'
 import AddCreditLoan from '../AddCreditLoan/AddCreditLoan'
 
-//----------------custom Theme for search field-------------------//
+//----------------custom Theme for search field-------------------// 
 const customTheme=(outerTheme)=>
 createTheme({
     palette: {

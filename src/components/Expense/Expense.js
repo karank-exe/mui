@@ -19,12 +19,12 @@ import { styles } from './ExpensePageStyle';
 import { Laptopstyles } from './ExpenseLaptopPageStyle';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/ExpenseTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from './FilterDrawer/FilterDrawer'
 // import AddDeposit from '../AddDeposit/AddDeposit'
 // import AddCreditLoan from '../AddCreditLoan/AddCreditLoan'
 import AddExpense from '../AddExpense/AddExpense'
 
-//----------------custom Theme for search field-------------------//
+//----------------custom Theme for search field-------------------// 
 const customTheme=(outerTheme)=>
 createTheme({
     palette: {

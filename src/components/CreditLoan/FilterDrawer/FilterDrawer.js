@@ -8,6 +8,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Drawer from '@mui/material/Drawer'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
+import Radio from '@mui/material/Radio';
 import CheckBox  from '@mui/material/Checkbox'
 import Slider from "@mui/material/Slider";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -15,8 +16,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
-import filterDelete from '../image/filterDelete.png'
-import { styles } from '../WithdrawPage/WithdrawPageStyles';
+import filterDelete from './image/filterDelete.png'
+import DatePickerIcon from './DatePickerIcon'
+// import { styles } from '../WithdrawPage/WithdrawPageStyles';
 const customTheme1=()=>
 createTheme({
     // palette: {
@@ -53,7 +55,7 @@ createTheme({
       },
 });
 
-const style = styles();
+// const style = styles();
 
 //-------------marks for slider--------------------------------//
 const marks = [
@@ -82,6 +84,14 @@ const marks = [
       label: "200"
     }
   ];
+  const transactionType=[
+    {
+      text:'Credit Given',
+    },
+    {
+      text:'Loan Borrowed',
+    }
+  ]
   const banks=[
     {
       text:'Shivam-HDFC',
@@ -107,7 +117,20 @@ const marks = [
   ]
 
 const FilterDrawer = ({filterOpen,handleFilter}) => {
-const [value, setValue] = useState([40, 160]);
+const [transactionSelectedValue, setTransactionSelectedValue]= useState('')
+const [sliderValue, setSliderValue] = useState([40, 160]);
+
+const handleTransactionChange=(event)=>{
+  setTransactionSelectedValue(event.target.value)
+}
+const controlProps=(item)=>({
+  checked: transactionSelectedValue===item,
+  onChange:handleTransactionChange,
+  value:item,
+  name:'radio-button',
+  inputProps:{'aria-label':item},
+});
+
 const handleSliderChange = (event, newValue) => {
     let [newFirstValue, newSecondValue] = newValue;
 
@@ -119,7 +142,7 @@ const handleSliderChange = (event, newValue) => {
       newSecondValue = 120  ;
     }
 
-    setValue([newFirstValue, newSecondValue]);
+    setSliderValue([newFirstValue, newSecondValue]);
   };
   return (
     <div>
@@ -154,6 +177,27 @@ const handleSliderChange = (event, newValue) => {
             </Box>
         </Toolbar>
         <Divider/>
+        <List>
+        <Typography sx={{fontFamily: 'Public Sans',
+                fontSize: '14px',
+                fontWeight: '600',
+                lineheight: '22px',
+                letterSpacing: '0px',
+                textAlign: 'left',
+                marginLeft:'10px',
+                color:'#212B36'}}>Panel</Typography>
+          {transactionType.map((data, index) => (
+            <ListItem key={data.text} sx={{height:'40px'}} disablePadding>
+              <ListItemButton>
+              <Radio {...controlProps(data.text)} color="success" />
+                <Typography sx={{fontFamily: 'Public Sans',fontSize: '14px',fontWeight: '600',letterSpacing: '0px',textAlign: 'left',color:'#212B36'}} >
+                    {data.text}
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+
         <List sx={{display:'flex', flexDirection:'column',mt:'10px'}}>
         <Typography sx={{//styleName: Desktop/Subtitle2;
                 fontFamily: 'Public Sans',
@@ -177,26 +221,7 @@ const handleSliderChange = (event, newValue) => {
           ))}
         </List>
        
-        <List>
-        <Typography sx={{fontFamily: 'Public Sans',
-                fontSize: '14px',
-                fontWeight: '600',
-                lineheight: '22px',
-                letterSpacing: '0px',
-                textAlign: 'left',
-                marginLeft:'10px',
-                color:'#212B36'}}>Panel</Typography>
-          {panel.map((data, index) => (
-            <ListItem key={data.text} sx={{height:'40px'}} disablePadding>
-              <ListItemButton>
-                <CheckBox color='success'/>
-                <Typography sx={{fontFamily: 'Public Sans',fontSize: '14px',fontWeight: '600',letterSpacing: '0px',textAlign: 'left',color:'#212B36'}} >
-                    {data.text}
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+     
         <Typography sx={{
             fontFamily: 'Public Sans',
             fontSize: '14px',
@@ -206,12 +231,23 @@ const handleSliderChange = (event, newValue) => {
             textAlign: 'left',
             marginLeft:'10px',
             color:'#212B36'
-        }}>Withdraw Date Range</Typography>
+        }}>Date Range</Typography>
         <Box sx={{paddingLeft:'10px'}}>
         <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="Start Date"  sx={{ width: "260px" }} />
+          <DatePicker label="Start Date"  
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>
@@ -220,7 +256,18 @@ const handleSliderChange = (event, newValue) => {
       <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="End Date"  sx={{ width: "260px" }} />
+          <DatePicker label="End Date"  
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>
@@ -307,7 +354,7 @@ const handleSliderChange = (event, newValue) => {
       <Box sx={{marginTop:'10px'}}>
       <Slider
           track="inverted"
-          value={value}
+          value={sliderValue}
           aria-labelledby="track-inverted-range-slider"
           min={0}
           max={200}

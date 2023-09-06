@@ -19,9 +19,9 @@ import { styles } from './BankTransferPageStyle';
 import { Laptopstyles } from './BankTransferLaptopPageStyle';
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/BankTransferTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from './FilterDrawer/FilterDrawer'
 import AddBankTransfer from '../AddBankTransfer/AddBankTransfer'
-
+ 
 
 //----------------custom Theme for search field-------------------//
 const customTheme=(outerTheme)=>

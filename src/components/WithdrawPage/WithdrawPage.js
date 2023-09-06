@@ -15,12 +15,12 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import AddIcon from '@mui/icons-material/Add';
 import upCircle from '../image/upcircle.png'
 import downCircle from '../image/downCircle.png'
-import filterIcon from '../image/filterButtonIcon.png'
+import filterIcon from '../image/filterButtonIcon.png' 
 import { styles } from './WithdrawPageStyles';
 import { Laptopstyles } from './WithdrawLaptopPageStyles'
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/WithdrawTable'
-import FilterDrawer from '../FilterDrawer/FilterDrawer'
+import FilterDrawer from '../WithdrawPage/FilterDrawer/FilterDrawer'
 import AddWithdrawal from '../AddWithdrawal/AddWithdrawal'
 
 

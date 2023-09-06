@@ -30,7 +30,7 @@ export default function useTable(records, headCells,filterFn) {
         return (<TableHead>
             <TableRow sx={{backgroundColor:'#F4F6F8'}}>
                 {
-                    headCells.map(headCell => (
+                    headCells.map(headCell => ( 
                         headCell.label==='User'?
                         ( <TableCell key={headCell.id}
                             sx={{textAlign:'left', border:'2px solid red','&.MuiTableCell-root':{padding:'10px 1px 7px 10px'}}}

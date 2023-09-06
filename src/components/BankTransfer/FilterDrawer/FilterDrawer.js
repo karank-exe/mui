@@ -15,8 +15,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
-import filterDelete from '../image/filterDelete.png'
-import { styles } from '../WithdrawPage/WithdrawPageStyles';
+import filterDelete from './image/filterDelete.png'
+import DatePickerIcon from './DatePickerIcon'
+// import { styles } from '../WithdrawPage/WithdrawPageStyles';
 const customTheme1=()=>
 createTheme({
     // palette: {
@@ -53,7 +54,7 @@ createTheme({
       },
 });
 
-const style = styles();
+// const style = styles();
 
 //-------------marks for slider--------------------------------//
 const marks = [
@@ -82,7 +83,19 @@ const marks = [
       label: "200"
     }
   ];
-  const banks=[
+  const fromBanks=[
+    {
+      text:'Shivam-HDFC',
+    },
+    {
+      text:'Rakesh-Union',
+    },
+    {
+      text:'Kevin-HDFC',
+    }
+  ]
+
+  const toBanks=[
     {
       text:'Shivam-HDFC',
     },
@@ -137,7 +150,7 @@ const handleSliderChange = (event, newValue) => {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '280px' },
           }}
         >
-             <div style={{border:'2px solid red',padding:0,position:'relative',height:'100%'}}>
+             <div style={{border:'2px solid red',padding:0,position:'relative',height:'100%'}}> 
         <Toolbar >
             <Box sx={{border:'2px solid black',width:'100%', display:'flex',justifyContent:'space-between',margin:0}} >
             <Typography sx={{
@@ -164,8 +177,8 @@ const handleSliderChange = (event, newValue) => {
                 textAlign: 'left',
                 marginLeft:'10px',
                 color:'#212B36'
-                }}>Banks</Typography>
-          {banks.map((data, index) => (
+                }}>From Bank</Typography>
+          {fromBanks.map((data, index) => (
             <ListItem key={data.text} disablePadding sx={{height:'40px'}}>
               <ListItemButton>
                 <CheckBox color='success' sx={{}}/>
@@ -176,27 +189,29 @@ const handleSliderChange = (event, newValue) => {
             </ListItem>
           ))}
         </List>
-       
-        <List>
-        <Typography sx={{fontFamily: 'Public Sans',
+
+        <List sx={{display:'flex', flexDirection:'column',mt:'10px'}}>
+        <Typography sx={{//styleName: Desktop/Subtitle2;
+                fontFamily: 'Public Sans',
                 fontSize: '14px',
                 fontWeight: '600',
                 lineheight: '22px',
                 letterSpacing: '0px',
                 textAlign: 'left',
                 marginLeft:'10px',
-                color:'#212B36'}}>Panel</Typography>
-          {panel.map((data, index) => (
-            <ListItem key={data.text} sx={{height:'40px'}} disablePadding>
+                color:'#212B36'
+                }}>To Bank</Typography>
+          {toBanks.map((data, index) => (
+            <ListItem key={data.text} disablePadding sx={{height:'40px'}}>
               <ListItemButton>
-                <CheckBox color='success'/>
-                <Typography sx={{fontFamily: 'Public Sans',fontSize: '14px',fontWeight: '600',letterSpacing: '0px',textAlign: 'left',color:'#212B36'}} >
+                <CheckBox color='success' sx={{}}/>
+                <Typography sx={{fontFamily: 'Public Sans',fontSize: '14px',fontWeight: '600',lineHeight:'22px',letterSpacing: '0px',textAlign: 'left',color:'#212B36'}} >
                     {data.text}
                 </Typography>
               </ListItemButton>
             </ListItem>
           ))}
-        </List>
+        </List>     
         <Typography sx={{
             fontFamily: 'Public Sans',
             fontSize: '14px',
@@ -211,7 +226,18 @@ const handleSliderChange = (event, newValue) => {
         <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="Start Date"  sx={{ width: "260px" }} />
+          <DatePicker label="Start Date"  
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>
@@ -220,7 +246,18 @@ const handleSliderChange = (event, newValue) => {
       <ThemeProvider theme={customTheme1()} >  
         <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
-          <DatePicker label="End Date"  sx={{ width: "260px" }} />
+          <DatePicker label="End Date"  
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
+          sx={{ width: "260px",
+          '& label.MuiFormLabel-root':{
+            color:'#919EAB',
+            fontFamily:'Public Sans',
+            fontSize:'14px',
+            fontWeight:400
+          },   
+          }} />
         </DemoContainer>
       </LocalizationProvider>
       </ThemeProvider>

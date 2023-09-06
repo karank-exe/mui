@@ -19,7 +19,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import {createTheme,ThemeProvider,useTheme} from '@mui/material/styles'
 import { TableRow, TableBody, TableCell } from '@mui/material'
 import useTable from '../control/PanelTable'
-import date from '../image/date.png'
+import DatePickerIcon from './DatePickerIcon'
 import filterIcon from '../image/filterButtonIcon.png'
 import './Panel.css'
 const style =styles()
@@ -44,7 +44,7 @@ createTheme({
                   fontFamily:'Public Sans',
                   fontSize:'14px',
                   fontWeight:400
-                }
+                },
               },
             },
           },
@@ -64,7 +64,10 @@ createTheme({
               fontFamily:'Public Sans',
               fontWeight:400,
               fontSize:'14px',
-              color:'#212B36'
+              color:'#212B36',
+              '& span':{
+                fontSize:'20px'
+              }
             }
           },
             },
@@ -212,7 +215,7 @@ const handleEndDate=(date)=>{
         <Typography sx={option==='Withdraw'?style.tableHeadActiveText:style.tableHeadText} onClick={()=>handleOption('Withdraw')}>Withdraw</Typography>
         <Typography sx={option==='Deposit'?style.tableHeadActiveText:style.tableHeadText} onClick={()=>handleOption('Deposit')} >Deposit</Typography>
       </Stack>
-      <Divider sx={{marginBottom:'10px'}}/>
+      <Divider sx={{marginBottom:'10px'}}/> 
       <Toolbar sx={{
                     '& .MuiStack-root':{
                       marginRight:'10px'
@@ -223,6 +226,9 @@ const handleEndDate=(date)=>{
         <DemoContainer components={["DatePicker"]}>
           <DatePicker label="Start Date"   
            value={startDate}
+           slots={{
+            openPickerIcon:DatePickerIcon
+           }}
            sx={{width:'260px'}}
            onChange={handleStartDate}
           />
@@ -234,6 +240,9 @@ const handleEndDate=(date)=>{
         <DemoContainer components={["DatePicker"]}>
           <DatePicker label="End Date"   
           value={endDate}
+          slots={{
+            openPickerIcon:DatePickerIcon
+           }}
            sx={{width:'260px'}}
            onChange={handleEndDate}
           />
